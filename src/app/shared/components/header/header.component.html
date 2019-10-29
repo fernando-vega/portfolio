@@ -1,0 +1,36 @@
+<header>
+  <div class="top">
+    <div class="header-logo">
+      <a routerLink="/home">
+        <img src="../../../../assets/images/logo.svg" alt="Logo Fernando Vega">
+      </a>
+    </div>
+    <div class="header-menu__icon" (click)="menu()" [ngClass]="{'open': status}" >
+      <div id="nav-icon" >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</header>
+<nav [ngClass]="{'open': status}">
+  <ul>
+    <li><a class="item-menu" (click)="menu()" routerLink="/about" routerLinkActive="active">About</a></li>
+    <li><a class="item-menu" (click)="menu()" routerLink="/skills" routerLinkActive="active">Portfolio</a></li>
+    <li><a class="item-menu" (click)="menu()" routerLink="/blog" routerLinkActive="active">Blog</a></li>
+    <li><a class="phone-item-menu" href="https://wa.me/573124944614?text=Me%20gustaría%20hablar%20contigo%20sobre%20_________" target="_blank">312 4944614</a></li>
+    <li><a class="mail-item-menu" href="mailto:juanfe.vega@gmail.com">juanfe.vega@gmail.com</a></li>
+    <li>
+      <div class="row start-xs social-icons">
+        <div class="col-xs-2 social-icons-icon"><a href=""><span class="icon-codepen"></span></a></div>
+        <div class="col-xs-2 social-icons-icon"><a href=""><span class="icon-github"></span></a></div>
+        <div class="col-xs-2 social-icons-icon"><a href=""><span class="icon-linkedin2"></span></a></div>
+        <div class="col-xs-2 social-icons-icon"><a href=""><span class="icon-twitter"></span></a></div>
+      </div>
+    </li>
+  </ul>
+</nav>

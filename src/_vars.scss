@@ -1,0 +1,39 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Overpass:300,400,700&display=swap');
+
+/* color palette */
+
+$blue: #185c9d;
+$blue2: #44CEA2;
+$gray: #8d8d8d;
+$black2: #101010;
+$black: #000000;
+$white: #ffffff;
+
+/* fuentes */
+
+$font-overpass: 'Overpass', sans-serif;
+$font-archivo: 'Archivo Black', sans-serif;
+
+/* media queries */
+
+@mixin for-phone-only {
+  @media (max-width: 540px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 768px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 960px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1140px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+.row, .row > *{
+  margin: 0;
+  padding: 0;
+}

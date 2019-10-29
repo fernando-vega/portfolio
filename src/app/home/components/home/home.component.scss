@@ -1,0 +1,94 @@
+@import '../../../../vars';
+:host{
+  left: 0;
+  background: linear-gradient(45deg, rgba(68,206,162,1) 0%, rgba(24,93,157,1) 100%);
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+
+  .home-container{
+    display: flex;
+    padding: 10px;
+    .home-container-item{
+      width: calc(100% - 20px);
+      transition: all 0.3s;
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      filter: blur(2px);
+      scale: .9;
+      .home-container-item-text{
+        background: rgba($white, 0.8);
+        height: calc(100vh - 20px);
+        transition: all 1s ease-in-out;
+        opacity: 0;
+        position: relative;
+        right: -100%;
+
+        .home-container-item-text-content{
+          align-items: center;
+          display: flex;
+          height: 100%;
+          justify-content: left;
+          padding-left: 10%;
+          position: absolute;
+          width: 100%;
+
+          article{
+            position: relative;
+            padding: 0 15% 0 0;
+            h2{
+              color: $blue;
+              font-size: 5rem;
+              font-family: $font-archivo;
+            }
+            p{
+              font-family: $font-overpass;
+              line-height: 1.5em;
+            }
+          }
+
+          .text-scroll{
+            color: $gray;
+            font-size: 1rem;
+            text-align: center;     
+            transform: rotate(90deg);
+            position: absolute;
+            right: -45%;
+            width: 100%;
+          }
+        }
+      }
+      &.active{
+        filter: blur(0px);
+        visibility: visible;
+        opacity: 1;
+        background-position: center center;
+        scale: 1;
+        &:first-child{
+          background: url('../../../../assets/images/hero/IMG-20190107-WA0049.png') no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(2){
+          background: url('../../../../assets/images/hero/computer.png') no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(3){
+          background: url('../../../../assets/images/hero/IMG-20190107-WA0049.png') no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(4){
+          background: url('../../../../assets/images/hero/computer.png') no-repeat;
+          background-size: cover;
+        }
+        .home-container-item-text{
+          opacity: 1;
+          right: 0;
+          filter: blur(0px);
+        }
+      }
+    }
+  }
+}
