@@ -20,16 +20,19 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
-        path: 'skills',
-        loadChildren: () => import('./skills/skills.module').then(m => m.SkillsModule)
-      },
-      {
-        path: 'blog',
-        loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
-      },
-      {
         path: 'about',
+        data: {title: 'Fernando | About'},
         loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+      },
+      {
+        path: 'resume',
+        data: {title: 'Fernando | Resume'},
+        loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
+      },
+      {
+        data: {title: 'Fernando | Portfolio'},
+        path: 'portfolio',
+        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
       }
     ]
   },

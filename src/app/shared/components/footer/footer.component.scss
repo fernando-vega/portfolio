@@ -1,0 +1,33 @@
+@import '../../../../vars';
+:host{
+  display: block;
+  padding: 30px 0 0 0;
+  color: $white;
+  a{
+    color: $white;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+      text-decoration-color: $white;
+    }   
+  }
+  .phone-item-menu, .social-icons{
+    padding: 15px 0;
+  }
+  .social-icons{
+    font-size: 1.4rem;
+  }
+  .copyright{
+    font-size: 14px;
+    margin: 0;
+  }
+  .inspired{
+    font-size: 10px;
+    opacity: .2;
+  }
+  @include for-tablet-landscape-up{
+    .phone-item-menu, .social-icons{
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../../../vars';
+.content-hero{
+  background: #333;
+  height: calc(50vh - 20px);
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  .text-scroll{
+    background: rgba($white,.5);
+    bottom: 0;
+    display: none;
+    font-size: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 50px 2px 50px;
+    position: absolute;
+    z-index: 9;
+  }
+  @include for-tablet-landscape-up { 
+    height: calc(100vh - 20px);
+    .text-scroll{
+      display: block;
+    }
+    &::after{
+      display: block;
+    }
+  }
+}

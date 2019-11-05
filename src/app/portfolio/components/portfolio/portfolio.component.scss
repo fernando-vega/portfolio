@@ -1,0 +1,65 @@
+@import '../../../../vars';
+:host{
+  background: linear-gradient(45deg, rgba(68,206,162,1) 0%, rgba(24,93,157,1) 100%);
+  display: block;
+  padding: 5px;
+  .resume{
+    padding: 0 15px;
+    .title{
+      span{
+        margin-top: -30px;
+        font-size: 1rem;
+      }
+    }
+    .skills{
+      padding: 30px 0;
+      h5{
+        font-size: 22px;
+        width: 100%;
+        line-height: 1.5em;
+        border-bottom: 2px $black2 solid;
+        margin-bottom: 30px;
+        margin-top: 15px;
+      }
+      ul{
+        list-style: none;
+        margin-top: 30px;
+        li{
+          border: none;
+          margin: 20px 0;
+          position: relative;
+          div{
+            border-bottom: 1px $black2 solid;
+            margin-bottom: 10px;
+            a{
+              margin: 0;
+              text-decoration: none;
+              p{
+                color: $blue;
+                font-family: $font-overpass;
+                font-weight: bold;
+                margin: 0;
+                padding-left: 10px;
+                text-transform: uppercase;
+              }
+            }
+          }
+          span{
+            padding-left: 10px;
+            text-transform: uppercase;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  @include for-tablet-landscape-up { 
+    padding: 10px;
+    .resume{
+      .skills{
+        padding: 30px;
+        padding-top: 0;
+      }
+    }
+  }
+}
