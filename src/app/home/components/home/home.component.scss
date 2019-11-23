@@ -82,19 +82,16 @@
         background-position: center center;
         scale: 1;
         &:first-child{
-          background: url('../../../../assets/images/hero/juan.png') no-repeat;
+          background: url('../../../../assets/images/hero/hero-1.png') no-repeat;
           background-size: cover;
+          background-position-x: 15%;
         }
         &:nth-child(2){
-          background: url('../../../../assets/images/hero/computer.png') no-repeat;
+          background: url('../../../../assets/images/hero/hero-2.png') no-repeat;
           background-size: cover;
         }
         &:nth-child(3){
-          background: url('../../../../assets/images/hero/juan.png') no-repeat;
-          background-size: cover;
-        }
-        &:nth-child(4){
-          background: url('../../../../assets/images/hero/computer.png') no-repeat;
+          background: url('../../../../assets/images/hero/hero-3.png') no-repeat;
           background-size: cover;
         }
         .home-container-item-text{

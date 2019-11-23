@@ -18,11 +18,11 @@ export class HeroComponent implements OnInit {
 
   ngOnInit() {
     if (this.router.url === '/about') {
-      this.backgroundImage = '../../../../assets/images/hero/computer.png';
+      this.backgroundImage = '../../../../assets/images/hero/hero-1.png';
     } else if (this.router.url === '/resume') {
-      this.backgroundImage = '../../../../assets/images/hero/juan.png';
+      this.backgroundImage = '../../../../assets/images/hero/hero-2.png';
     } else if (this.router.url === '/portfolio') {
-      this.backgroundImage = '../../../../assets/images/hero/computer.png';
+      this.backgroundImage = '../../../../assets/images/hero/hero-3.png';
     }
     this.particles();
   }
@@ -276,7 +276,7 @@ export class HeroComponent implements OnInit {
       particleColor: '#fff',
       background: this.backgroundImage,
       interactive: true,
-      speed: 'fast',
+      speed: 'low',
       density: 'high'
     };
     const particleCanvas = new ParticleNetwork(canvasDiv, options);
