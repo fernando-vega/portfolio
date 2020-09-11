@@ -12,24 +12,24 @@ export class ScrollDirective {
 
   constructor() {}
 
-
-  @HostListener('wheel', ['$event'])onWheel(event) {
-
-      if (this.timeoutQueue) {
-          clearTimeout(this.timeoutQueue);
+  @HostListener('click', ['$event']) onClick(event: Event): void {
+    if (event) {
+      const size = document.childNodes.length + 1;
+      if (this.count < size && this.status === false) {
+        this.count = this.count + 1;
+        this.getNextProject();
+        if (this.count === 3) {
+          this.status = true;
+        }
+      } else if (this.status === true) {
+        this.count -= 1;
+        this.getPrevProject();
+        if (this.count === 1) {
+          this.status = false;
+        }
       }
-
-      this.timeoutQueue = window.setTimeout(() => {
-          if (event.wheelDelta < 0) {
-              // DOWN
-              this.getNextProject();
-          } else {
-              // TOP
-              this.getPrevProject();
-          }
-      }, 800);
+    }
   }
-
   @HostListener('touchstart', ['$event']) onTouchStart(event: Event): void {
     if (event) {
       const size = document.childNodes.length + 1;

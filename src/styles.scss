@@ -23,6 +23,10 @@ body{
   }
 }
 
+.container {
+  max-width: 100%;
+}
+
 .btn{
   cursor: pointer;
   display: inline-block;
@@ -90,10 +94,11 @@ body{
     font-family: $font-overpass;
     line-height: 1.5em;
     text-align: justify;
-    padding-right: 0;
+    padding-right: 15px;
   }
   .work-experience{
     padding-left: 15px;
+    padding-right: 15px;
     margin: 30px 0;
     display: block;
     h5{
@@ -114,7 +119,7 @@ body{
         &::before{
           background-color: $black2;
           border-radius: 50%;
-          bottom: 27px;
+          top: 22px;
           content: '';
           height: 8px;
           position: absolute;
@@ -124,7 +129,7 @@ body{
           &::before{
             animation: ripple 1.2s infinite;
             background-color: $blue2;
-            bottom: 25px;
+            top: 20px;
             height: 12px;
             left: -3px;
             width: 12px;
@@ -178,6 +183,42 @@ body{
     transform: scale(.5);
   }
 }
+
+/********  Scrolbar *********/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b639d;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #174e78;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #c7e5ff;
+}
+::-webkit-scrollbar-track:active {
+  background: #1b639d;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /********  Icons *********/
 
 [class^="icon-"], [class*=" icon-"] {

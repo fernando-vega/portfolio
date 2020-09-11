@@ -133,6 +133,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "portfolio2020"
+    }
+  },
+  "defaultProject": "portfolio2020",
+  "cli": {
+    "analytics": false
+  }
 }

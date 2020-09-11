@@ -19,9 +19,9 @@ export class HeroComponent implements OnInit {
   ngOnInit() {
     if (this.router.url === '/about') {
       this.backgroundImage = '../../../../assets/images/hero/hero-1.png';
-    } else if (this.router.url === '/resume') {
-      this.backgroundImage = '../../../../assets/images/hero/hero-2.png';
     } else if (this.router.url === '/portfolio') {
+      this.backgroundImage = '../../../../assets/images/hero/hero-2.png';
+    } else if (this.router.url === '/resume') {
       this.backgroundImage = '../../../../assets/images/hero/hero-3.png';
     }
     this.particles();
