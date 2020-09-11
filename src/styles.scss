@@ -87,8 +87,10 @@ body{
   padding: 90px 15px;
 }
 
-
 .resume, .about{
+  >.col-sm-6 {
+    z-index: 99;
+  }
   p{
     font-size: 1rem;
     font-family: $font-overpass;
