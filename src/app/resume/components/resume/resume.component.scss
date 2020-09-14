@@ -4,15 +4,23 @@
   display: block;
   padding: 5px;
   .resume{
-    padding: 0 15px;
+    @include for-phone-only { 
+      padding: 0 !important;
+    }
     .title{
+      h1 {
+        font-size: 2rem;
+      }
       span{
-        margin-top: -30px;
+        margin-top: -5px;
         font-size: 1.5rem;
       }
     }
     .diciplines{
       padding: 0 30px;
+      @include for-phone-only { 
+        padding: 0 0 0 30px;
+      }
     }
     .diciplines{
       h5{

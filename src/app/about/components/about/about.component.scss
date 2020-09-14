@@ -29,7 +29,6 @@
       list-style: none;
       li{
         margin: 15px 0;
-        text-align: justify;
         &::before {
           content: "•"; color: $blue2;
           padding-right: 4px;
