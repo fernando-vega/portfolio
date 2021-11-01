@@ -25,7 +25,7 @@
     "@angular/router": "~12.2.12",
     "@nguniversal/express-engine": "^8.0.0-rc.1",
     "@nguniversal/module-map-ngfactory-loader": "^8.0.0-rc.1",
-    "@types/jest": "^24.0.21",
+    "@types/jest": "^27.0.2",
     "flexboxgrid": "^6.3.1",
     "ng-inline-svg": "^9.1.0",
     "rxjs": "~6.6.7",
@@ -49,10 +49,10 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
-    "ts-loader": "^4.2.0",
+    "ts-loader": "^9.2.6",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.3.5",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^4.9.1"
   }
 }
