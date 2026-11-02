@@ -1,0 +1,103 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { getContent } from '../i18n';
+
+const { advisory, contact, ui } = getContent(Astro.currentLocale);
+---
+
+<section class="sheet sheet--surface" id="asesoria" aria-labelledby="asesoria-title">
+  <div class="sheet__content container adv">
+    <header class="adv__head">
+      <div class="adv__title">
+        <SectionLabel number="04" title={advisory.label} />
+        <h2 class="h2" id="asesoria-title" data-reveal>{advisory.title}</h2>
+      </div>
+      <p class="body-l muted" data-reveal>{advisory.intro}</p>
+    </header>
+
+    <ul class="services">
+      {advisory.services.map((s) => (
+        <li class="service" data-reveal>
+          <span class="service__icon"><Icon name={s.icon} size={28} /></span>
+          <h3 class="h3">{s.title}</h3>
+          <p class="muted">{s.text}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="how" data-reveal>
+      <p class="label-m accent">{ui.howIWork}</p>
+      <ol class="how__steps">
+        {advisory.steps.map((s, i) => (
+          <li><span class="how__n label-s">{i + 1}</span><span class="body-s">{s}</span></li>
+        ))}
+      </ol>
+      <Button href={contact.advisoryMailto}>{ui.bookCall}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .adv { display: grid; gap: 48px; }
+  .adv__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 460px;
+    gap: 96px;
+    align-items: end;
+  }
+  .adv__title { display: grid; gap: 24px; }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .service {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    padding: 32px;
+    border-radius: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .service__icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgb(68 206 162 / 0.12);
+    color: var(--accent);
+  }
+  .how {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 32px;
+    border-radius: 20px;
+    background: var(--bg);
+  }
+  .how__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .how__steps li { display: flex; align-items: center; gap: 12px; }
+  .how__n {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--brand-gradient);
+    color: var(--on-brand);
+  }
+
+  @media (max-width: 1023px) {
+    .adv__head { grid-template-columns: 1fr; gap: 24px; }
+    .services { grid-template-columns: 1fr; }
+    .how { grid-template-columns: 1fr; gap: 20px; }
+    .how__steps { grid-template-columns: 1fr; gap: 12px; }
+  }
+  @media (max-width: 599px) {
+    .adv { gap: 24px; }
+    .service { padding: 24px; }
+    .how { padding: 24px; }
+  }
+</style>

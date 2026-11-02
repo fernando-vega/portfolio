@@ -1,0 +1,89 @@
+---
+import '@fontsource/archivo/latin-400.css';
+import '@fontsource/archivo/latin-700.css';
+import '@fontsource/archivo-black/latin-400.css';
+import '@fontsource/overpass-mono/latin-400.css';
+import '@fontsource/overpass-mono/latin-500.css';
+import '../styles/global.css';
+
+import { getImage } from 'astro:assets';
+import photo from '../assets/foto-fernando.png';
+import { getContent, localeHome, locales, defaultLocale, asset } from '../i18n';
+
+const t = getContent(Astro.currentLocale);
+const { meta, profile, experience, stack, ui } = t;
+
+const canonical = new URL(localeHome(meta.lang), Astro.site).href;
+const alternates = locales.map((l) => ({ hreflang: getContent(l).meta.htmlLang, href: new URL(localeHome(l), Astro.site).href }));
+const xDefault = new URL(localeHome(defaultLocale), Astro.site).href;
+const otherOgLocales = locales.filter((l) => l !== meta.lang).map((l) => getContent(l).meta.ogLocale);
+
+const og = await getImage({ src: photo, width: 1200, height: 630, format: 'jpg', quality: 82 });
+const ogUrl = new URL(og.src, Astro.site).href;
+
+const current = experience.jobs.find((j) => j.current);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: canonical,
+  image: ogUrl,
+  email: `mailto:${profile.email}`,
+  jobTitle: meta.jobTitle,
+  worksFor: current ? { '@type': 'Organization', name: current.company } : undefined,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: meta.alumniOf },
+  address: { '@type': 'PostalAddress', addressCountry: 'CO' },
+  knowsLanguage: ['es', 'en'],
+  sameAs: [profile.social.linkedin, profile.social.github, 'https://tramafin.com/autor'],
+  knowsAbout: stack.groups.flatMap((g) => g.items),
+};
+---
+
+<!doctype html>
+<html lang={meta.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0B0D10" />
+    <meta name="author" content={profile.name} />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content={meta.ogLocale} />
+    {otherOgLocales.map((l) => <meta property="og:locale:alternate" content={l} />)}
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={meta.portraitAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <link rel="icon" href={asset('favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={asset('favicon-32x32.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={asset('favicon-16x16.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={asset('apple-touch-icon.png')} />
+    <link rel="manifest" href={asset('site.webmanifest')} />
+    <link rel="sitemap" href={asset('sitemap-index.xml')} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">{ui.skipLink}</a>
+    <slot />
+    <script>
+      import '../scripts/fallback-observer';
+    </script>
+  </body>
+</html>

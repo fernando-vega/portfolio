@@ -1,0 +1,54 @@
+---
+import Icon from './Icon.astro';
+import { getContent } from '../i18n';
+import type { PastProject } from '../i18n/types';
+
+interface Props {
+  project: PastProject;
+  own?: boolean;
+}
+const { project, own = false } = Astro.props;
+const { ui } = getContent(Astro.currentLocale);
+---
+
+<li class="pc-item" data-reveal>
+  <a class:list={['pc', { 'pc--own': own }]} href={project.url} target="_blank" rel="noopener">
+    <span class="pc__top">
+      <span class="label-s accent">{project.year}</span>
+      <Icon name="arrow-up-right" class="pc__arrow" />
+    </span>
+    <span class="h3">{project.name}</span>
+    <span class="body-s muted">{project.meta}</span>
+    <span class="sr-only">{ui.newTab}</span>
+  </a>
+</li>
+
+<style>
+  .pc-item { display: flex; }
+  .pc {
+    flex: 1;
+    display: grid;
+    gap: 12px;
+    padding: 24px;
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: translate var(--dur-fast) var(--ease-out), border-color var(--dur-fast), box-shadow var(--dur-fast);
+  }
+  .pc--own { border-color: rgb(68 206 162 / 0.45); }
+  .pc__top { display: flex; justify-content: space-between; align-items: center; color: var(--muted); }
+  .pc__top :global(.pc__arrow) { transition: translate var(--dur-fast) var(--ease-out), color var(--dur-fast); }
+  @media (hover: hover) {
+    .pc:hover {
+      translate: 0 -4px;
+      box-shadow: 0 16px 32px rgb(0 0 0 / 0.35);
+      border-color: transparent;
+      background:
+        linear-gradient(var(--surface), var(--surface)) padding-box,
+        linear-gradient(45deg, var(--brand-green), var(--brand-blue)) border-box;
+    }
+    .pc:hover :global(.pc__arrow) { translate: 2px -2px; color: var(--accent); }
+  }
+</style>

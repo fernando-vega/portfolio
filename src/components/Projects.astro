@@ -1,0 +1,152 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Button from './Button.astro';
+import ProjectCard from './ProjectCard.astro';
+import { getContent } from '../i18n';
+
+const { projects, ui } = getContent(Astro.currentLocale);
+const { trama, pastWork } = projects;
+---
+
+<section class="sheet" id="proyectos" aria-labelledby="proyectos-title">
+  <div class="sheet__content container projects">
+    <header class="projects__head">
+      <SectionLabel number="03" title={projects.label} />
+      <h2 class="h2" id="proyectos-title" data-reveal>{projects.title}</h2>
+    </header>
+
+    <article class="feature" data-reveal aria-labelledby="trama-title">
+      <div class="feature__info">
+        <p class="badge label-s"><span class="dot-live"></span>{trama.badge}</p>
+        <h3 class="display-l feature__name" id="trama-title">{trama.name}</h3>
+        <p class="body-l muted">{trama.description}</p>
+        <ul class="kpis">
+          {trama.kpis.map((k) => (
+            <li><span class="h2 accent">{k.value}</span><span class="label-s muted">{k.label}</span></li>
+          ))}
+        </ul>
+        <div class="feature__ctas">
+          <Button href={trama.url} target="_blank" rel="noopener">{ui.visitTrama}</Button>
+          <Button variant="outline" href={trama.methodologyUrl} target="_blank" rel="noopener">{ui.methodology}</Button>
+        </div>
+      </div>
+
+      <figure class="mock" aria-label={ui.mockLabel}>
+        <div class="mock__head">
+          <span class="h3">{trama.mock.title}</span>
+          <span class="label-s muted">{trama.mock.country}</span>
+        </div>
+        {trama.mock.fields.map((f) => (
+          <div class="mock__field">
+            <span class="label-s muted">{f.label}</span>
+            <span class="mock__input">{f.value}</span>
+          </div>
+        ))}
+        <div class="mock__result">
+          <span class="label-s">{trama.mock.resultLabel}</span>
+          <span class="h2">{trama.mock.result}</span>
+        </div>
+        <figcaption class="sr-only">{ui.mockCaption}</figcaption>
+      </figure>
+    </article>
+
+    <div class="past">
+      <div class="past__head">
+        <h3 class="h3">{pastWork.title}</h3>
+        <p class="label-s muted">{pastWork.range}</p>
+      </div>
+      {[pastWork.own, pastWork.collab].map((group, gi) => (
+        <div class="past__group">
+          <p class="past__gtitle">
+            <span class:list={['past__dot', { 'past__dot--own': gi === 0 }]}></span>
+            <span class="label-m">{group.title}</span>
+            <span class="body-s muted">— {group.subtitle}</span>
+          </p>
+          <ul class="past__grid">
+            {group.items.map((p) => <ProjectCard project={p} own={gi === 0} />)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects { display: grid; gap: 48px; }
+  .projects__head { display: grid; gap: 24px; }
+
+  .feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 64px;
+    align-items: center;
+    padding: 56px;
+    border-radius: var(--radius-lg);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(45deg, var(--brand-green), var(--brand-blue)) border-box;
+  }
+  .feature__info { display: grid; gap: 20px; justify-items: start; }
+  .feature__name { font-size: clamp(48px, 4.6vw, 64px); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgb(68 206 162 / 0.14);
+    color: var(--accent);
+  }
+  .kpis { display: flex; gap: 40px; }
+  .kpis li { display: grid; gap: 4px; }
+  .feature__ctas { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 8px; }
+
+  .mock {
+    margin: 0;
+    display: grid;
+    gap: 16px;
+    padding: 28px;
+    border-radius: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .mock__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .mock__head .label-s { white-space: nowrap; }
+  .mock__field { display: grid; gap: 6px; }
+  .mock__input {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .mock__result {
+    display: grid;
+    gap: 4px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: var(--brand-gradient);
+    color: var(--on-brand);
+  }
+
+  .past { display: grid; gap: 40px; padding-top: 24px; }
+  .past__head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+  .past__group { display: grid; gap: 16px; }
+  .past__gtitle { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .past__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .past__dot--own { background: var(--brand-green); }
+  .past__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+  @media (max-width: 1023px) {
+    .feature { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+    .past__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 599px) {
+    .projects { gap: 24px; }
+    .feature { padding: 24px; }
+    .feature__name { font-size: 48px; }
+    .kpis { gap: 28px; }
+    .feature__ctas { display: grid; width: 100%; }
+    .past__grid { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>

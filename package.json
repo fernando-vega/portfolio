@@ -1,58 +1,23 @@
 {
-  "name": "portfolio2020",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
-    "serve:ssr": "node dist/server.js",
-    "build:client-and-server-bundles": "ng build --configuration production && ng run portfolio2020:server",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
-  },
+  "name": "portfolio",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@angular/animations": "~12.2.12",
-    "@angular/common": "~12.2.12",
-    "@angular/compiler": "~12.2.12",
-    "@angular/core": "~12.2.12",
-    "@angular/forms": "~12.2.12",
-    "@angular/platform-browser": "~12.2.12",
-    "@angular/platform-browser-dynamic": "~12.2.12",
-    "@angular/router": "~12.2.12",
-    "@nguniversal/express-engine": "^8.0.0-rc.1",
-    "@nguniversal/module-map-ngfactory-loader": "^8.0.0-rc.1",
-    "@types/jest": "^27.0.2",
-    "flexboxgrid": "^6.3.1",
-    "ng-inline-svg": "^9.1.0",
-    "rxjs": "~6.6.7",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+  "type": "module",
+  "description": "Portafolio de Fernando Vega — Ingeniero de Sistemas, Full Stack.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.12",
-    "@angular/cli": "~12.2.12",
-    "@angular/compiler-cli": "~12.2.12",
-    "@angular/language-service": "~12.2.12",
-    "@angular/platform-server": "^12.2.12",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
-    "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.3.6",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
-    "protractor": "~7.0.0",
-    "ts-loader": "^9.2.6",
-    "ts-node": "~7.0.0",
-    "tslint": "~6.1.0",
-    "typescript": "~4.3.5",
-    "webpack-cli": "^4.9.1"
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource/archivo": "5.3.0",
+    "@fontsource/archivo-black": "5.3.0",
+    "@fontsource/overpass-mono": "5.3.0",
+    "astro": "7.4.1"
   }
 }
