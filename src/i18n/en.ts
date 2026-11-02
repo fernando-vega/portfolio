@@ -15,11 +15,11 @@ export const en: SiteContent = {
     ogLocale: 'en_US',
     cvFile: 'cv/Juan-Fernando-Vega-CV-EN.pdf',
     cvDownloadName: 'Juan-Fernando-Vega-CV-EN.pdf',
-    jobTitle: 'Systems and Computer Engineer · Full Stack Developer',
+    jobTitle: 'Systems and Computer Engineer · Senior Full Stack Developer',
     alumniOf: 'Universidad Pedagógica y Tecnológica de Colombia (UPTC)',
     title: 'Fernando Vega · Systems and Computer Engineer, Full Stack',
     description:
-      'Systems and Computer Engineer, full stack, in digital banking. I take software from idea to production: analysis, architecture, development, testing, and deployment with React, Angular, Node.js, Python, and AWS. Creator of Trama.',
+      'Systems and Computer Engineer, senior full stack, in digital banking. I take software from idea to production: analysis, architecture, development, testing, and deployment with React, Angular, Node.js, Python, and AWS. Creator of Trama.',
     portraitAlt: 'Portrait of Fernando Vega',
   },
 
@@ -62,7 +62,7 @@ export const en: SiteContent = {
     name: 'Fernando Vega',
     headline: 'I take software from idea to production.',
     role: 'Systems and Computer Engineer',
-    roleTag: 'Full Stack',
+    roleTag: 'Senior Full Stack',
     org: 'Digital Division, Banco de Bogotá',
     intro:
       '12+ years building web products and 5+ in digital banking. I analyze the problem, design the architecture, then build, test, and deploy on AWS. Colombia · Remote.',
@@ -117,13 +117,13 @@ export const en: SiteContent = {
         start: 'Jun 2022',
         end: 'Present',
         company: 'Banco de Bogotá',
-        role: 'Full Stack Developer · Digital Division (Analyst I)',
+        role: 'Senior Full Stack Developer · Digital Division (Analyst I)',
         description:
-          "I build high-traffic web platforms for the bank's customers, with architectures designed to scale: micro-frontends in React, Angular, and Astro, SSR/CSR rendering, Node.js and Python services on PostgreSQL, and infrastructure as code on AWS with Terraform and CI/CD.",
-        tags: ['React', 'Angular', 'Astro', 'Micro-frontends', 'SSR / CSR', 'Node.js', 'Python', 'PostgreSQL', 'AWS', 'Terraform', 'CI/CD'],
+          "I build high-traffic web platforms for the bank's customers, with architectures designed to scale: micro-frontends in React, Angular, Astro, and Stencil, SSR/CSR rendering, Node.js and Python services, libraries, and APIs documented with OpenAPI (OAS) on PostgreSQL, and infrastructure as code on AWS serverless with Terraform and CI/CD.",
+        tags: ['React', 'Angular', 'Astro', 'Stencil', 'Micro-frontends', 'SSR / CSR', 'Node.js', 'Python', 'OpenAPI', 'PostgreSQL', 'AWS Serverless', 'Terraform', 'CI/CD'],
         current: true,
       },
-      { start: 'Jan 2022', end: 'May 2022', company: 'RobinFood', role: 'Frontend Developer' },
+      { start: 'Jan 2022', end: 'Jun 2022', company: 'RobinFood', role: 'Frontend Developer' },
       {
         start: 'Oct 2020',
         end: 'Jan 2022',
@@ -134,7 +134,7 @@ export const en: SiteContent = {
       },
       {
         start: 'Feb 2020',
-        end: 'Sep 2020',
+        end: 'Oct 2020',
         company: 'Tita Media',
         role: 'Frontend Developer',
         description: 'Built the Titamedia website and contributed to VTEX e-commerce stores for brands such as Mario Hernández, Bata, Prochampions, Panamericana, Samsung Colombia, and Totto.',
@@ -154,16 +154,16 @@ export const en: SiteContent = {
         description: 'Built the frontend of Colombia Travel — Birds, a nature tourism website, and contributed to websites and campaigns for brands such as Bancolombia, Seguros Bolívar, and Marca País Colombia.',
       },
       {
-        start: 'Nov 2015',
-        end: 'Jul 2018',
+        start: 'Nov 2014',
+        end: 'Jul 2019',
         company: 'DoD Media Group',
         role: 'Software Engineer',
         description:
-          'Alongside SIA Software: built Inmobiliaria Contreras, Dromedario, and Boyacá se escucha, and contributed to Hotel Calle Principal.',
+          'Alongside SIA Software and Quadi: built Inmobiliaria Contreras, Dromedario, and Boyacá se escucha, and contributed to Hotel Calle Principal.',
       },
       {
-        start: 'Feb 2014',
-        end: 'Dec 2017',
+        start: 'Jan 2014',
+        end: 'Jun 2018',
         company: 'SIA Software',
         role: 'Co-founder & Software Engineer',
         description: 'Co-founded a software studio and helped 10+ companies improve their processes with custom software.',
@@ -264,9 +264,9 @@ export const en: SiteContent = {
     title: 'Tools I work with',
     intro: 'I choose the tool for the problem, not the other way around.',
     groups: [
-      { title: 'Frontend', items: ['React', 'Angular', 'Astro', 'Micro-frontends', 'SSR', 'CSR'] },
-      { title: 'Backend & Data', items: ['Node.js', 'Python', 'PostgreSQL'] },
-      { title: 'Cloud & DevOps', items: ['AWS', 'Terraform', 'CI/CD', 'Git'] },
+      { title: 'Frontend', items: ['React', 'Angular', 'Astro', 'Stencil', 'Micro-frontends', 'SSR', 'CSR'] },
+      { title: 'Backend & Data', items: ['Node.js', 'Python', 'APIs with OpenAPI (OAS)', 'PostgreSQL'] },
+      { title: 'Cloud & DevOps', items: ['AWS', 'Serverless', 'Terraform', 'CI/CD', 'Git'] },
       { title: 'Architecture & Design', items: ['Software architecture', 'Figma'] },
       {
         title: 'AI Engineering',
