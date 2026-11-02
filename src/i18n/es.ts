@@ -182,7 +182,7 @@ export const es: SiteContent = {
       kpis: [
         { value: '24', label: 'herramientas' },
         { value: '6', label: 'países' },
-        { value: '0', label: 'registros' },
+        { value: 'SIN', label: 'registro' },
       ],
       // Ejemplo ilustrativo: 20.000.000 COP, 18 % E.A., 36 meses (sistema francés).
       mock: {
