@@ -1,6 +1,6 @@
 ---
 interface Props {
-  name: 'github' | 'linkedin' | 'mail' | 'arrow-up-right' | 'download' | 'copy' | 'architecture' | 'traffic' | 'cloud' | 'logo';
+  name: 'github' | 'linkedin' | 'mail' | 'arrow-up-right' | 'download' | 'copy' | 'architecture' | 'traffic' | 'cloud' | 'ai' | 'logo';
   size?: number;
   class?: string;
   label?: string;
@@ -52,6 +52,11 @@ const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'tr
 {name === 'cloud' && (
   <svg class={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" {...a11y}>
     <path d="M7 18a5 5 0 1 1 1.1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18H7Z" />
+  </svg>
+)}
+{name === 'ai' && (
+  <svg class={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" {...a11y}>
+    <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15zM5 15l.6 1.4L7 17l-1.4.6L5 19l-.6-1.4L3 17l1.4-.6L5 15z" />
   </svg>
 )}
 {name === 'logo' && (

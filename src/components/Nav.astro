@@ -1,25 +1,39 @@
 ---
 import Icon from './Icon.astro';
-import { nav, profile } from '../data/content';
+import { getContent, localeHome } from '../i18n';
+
+const { nav, profile, ui } = getContent(Astro.currentLocale);
+const altHref = localeHome(ui.langSwitch.hreflang);
 ---
 
-<nav class="nav container" aria-label="Principal">
-  <a href="#inicio" class="nav__logo" aria-label="Fernando Vega — inicio">
+<nav class="nav container" aria-label={ui.navLabel}>
+  <a href="#inicio" class="nav__logo" aria-label={ui.logoLabel}>
     <Icon name="logo" size={48} />
   </a>
 
   <ul class="nav__links">
     {nav.map((item) => <li><a class="label-m" href={item.href}>{item.label}</a></li>)}
+    <li>
+      <a class="label-m lang" href={altHref} hreflang={ui.langSwitch.hreflang} lang={ui.langSwitch.hreflang} aria-label={ui.langSwitch.label}>{ui.langSwitch.short}</a>
+    </li>
   </ul>
 
-  <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+  <button
+    class="burger"
+    type="button"
+    aria-expanded="false"
+    aria-controls="menu"
+    aria-label={ui.openMenu}
+    data-label-open={ui.openMenu}
+    data-label-close={ui.closeMenu}
+  >
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="menu" id="menu" hidden>
   <ol class="menu__list">
-    <li style="--i: 0"><a href="#inicio"><span class="label-s">01</span><span class="h2">Inicio</span></a></li>
+    <li style="--i: 0"><a href="#inicio"><span class="label-s">01</span><span class="h2">{ui.home}</span></a></li>
     {nav.map((item, i) => (
       <li style={`--i: ${i + 1}`}>
         <a href={item.href}><span class="label-s">{String(i + 2).padStart(2, '0')}</span><span class="h2">{item.label}</span></a>
@@ -29,8 +43,9 @@ import { nav, profile } from '../data/content';
   <div class="menu__foot">
     <a class="mono-s" href={`mailto:${profile.email}`}>{profile.email}</a>
     <div class="menu__social">
-      <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
-      <a href={profile.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+      <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label={`LinkedIn (${ui.opensInNewTab})`}><Icon name="linkedin" /></a>
+      <a href={profile.social.github} target="_blank" rel="noopener" aria-label={`GitHub (${ui.opensInNewTab})`}><Icon name="github" /></a>
+      <a class="menu__lang label-m" href={altHref} hreflang={ui.langSwitch.hreflang} lang={ui.langSwitch.hreflang} aria-label={ui.langSwitch.label}>{ui.langSwitch.short}</a>
     </div>
   </div>
 </div>
@@ -53,6 +68,16 @@ import { nav, profile } from '../data/content';
     transition: opacity var(--dur-fast);
   }
   .nav__links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+  .nav__links .lang {
+    display: inline-grid;
+    place-items: center;
+    min-width: 44px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.45);
+  }
+  .nav__links .lang:hover { text-decoration: none; background: rgb(255 255 255 / 0.15); }
+  .menu__social .menu__lang { width: auto; padding: 0 16px; color: var(--on-brand); text-decoration: none; }
 
   .burger {
     display: none;
@@ -156,7 +181,7 @@ import { nav, profile } from '../data/content';
   if (btn && menu) {
     const setOpen = (open: boolean) => {
       btn.setAttribute('aria-expanded', String(open));
-      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      btn.setAttribute('aria-label', (open ? btn.dataset.labelClose : btn.dataset.labelOpen) ?? '');
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
         menu.hidden = false;

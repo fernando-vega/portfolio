@@ -4,9 +4,10 @@ import photo from '../assets/foto-fernando.png';
 import Nav from './Nav.astro';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import { profile, heroChips } from '../data/content';
+import { getContent, asset } from '../i18n';
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const t = getContent(Astro.currentLocale);
+const { profile, heroChips, ui, meta } = t;
 ---
 
 <header class="hero" id="inicio">
@@ -16,9 +17,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   <div class="hero__inner container">
     <div class="hero__intro">
-      <p class="label-m">Hola, soy {profile.name}</p>
+      <p class="label-m">{ui.greeting}</p>
       <h1 class="display-l hero__title">{profile.headline}</h1>
-      <ol class="lifecycle" aria-label="Etapas que cubro">
+      <ol class="lifecycle" aria-label={ui.lifecycleLabel}>
         {profile.lifecycle.map((s) => <li class="lifecycle__step label-s" data-step>{s}</li>)}
       </ol>
       <p class="h3 hero__role">{profile.role}<br />{profile.org}</p>
@@ -27,10 +28,10 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <span class="hero__text--short">{profile.introShort}</span>
       </p>
       <div class="hero__ctas">
-        <Button variant="dark" href="#contacto">Hablemos</Button>
-        <Button variant="outline-light" href="#proyectos">Ver proyectos</Button>
+        <Button variant="dark" href="#contacto">{ui.ctaTalk}</Button>
+        <Button variant="outline-light" href="#proyectos">{ui.ctaProjects}</Button>
       </div>
-      <a class="label-s hero__cv" href={`${base}CV.pdf`} download>Descargar CV <Icon name="download" size={14} /></a>
+      <a class="label-s hero__cv" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv} <Icon name="download" size={14} /></a>
     </div>
 
     <div class="photo" data-tilt>
@@ -38,7 +39,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div class="photo__card">
         <Picture
           src={photo}
-          alt={`Retrato de ${profile.name}`}
+          alt={meta.portraitAlt}
           formats={['avif', 'webp']}
           fallbackFormat="jpg"
           quality={72}
@@ -54,8 +55,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     </div>
   </div>
 
-  <a class="scroll-cue" href="#sobre-mi" aria-label="Desliza para ver más">
-    <span class="scroll-cue__label label-m" aria-hidden="true">Desliza para ver más</span>
+  <a class="scroll-cue" href="#sobre-mi" aria-label={ui.scrollCue}>
+    <span class="scroll-cue__label label-m" aria-hidden="true">{ui.scrollCue}</span>
     <span class="scroll-cue__track" aria-hidden="true"><span class="scroll-cue__dot"></span></span>
   </a>
 </header>

@@ -2,14 +2,17 @@
 import SectionLabel from './SectionLabel.astro';
 import Button from './Button.astro';
 import ProjectCard from './ProjectCard.astro';
-import { trama, pastWork } from '../data/content';
+import { getContent } from '../i18n';
+
+const { projects, ui } = getContent(Astro.currentLocale);
+const { trama, pastWork } = projects;
 ---
 
 <section class="sheet" id="proyectos" aria-labelledby="proyectos-title">
   <div class="sheet__content container projects">
     <header class="projects__head">
-      <SectionLabel number="03" title="Proyectos" />
-      <h2 class="h2" id="proyectos-title" data-reveal>Producto propio y trabajo para marcas</h2>
+      <SectionLabel number="03" title={projects.label} />
+      <h2 class="h2" id="proyectos-title" data-reveal>{projects.title}</h2>
     </header>
 
     <article class="feature" data-reveal aria-labelledby="trama-title">
@@ -23,12 +26,12 @@ import { trama, pastWork } from '../data/content';
           ))}
         </ul>
         <div class="feature__ctas">
-          <Button href={trama.url} target="_blank" rel="noopener">Visitar tramafin.com</Button>
-          <Button variant="outline" href={trama.methodologyUrl} target="_blank" rel="noopener">Metodología</Button>
+          <Button href={trama.url} target="_blank" rel="noopener">{ui.visitTrama}</Button>
+          <Button variant="outline" href={trama.methodologyUrl} target="_blank" rel="noopener">{ui.methodology}</Button>
         </div>
       </div>
 
-      <figure class="mock" aria-label="Ejemplo ilustrativo del simulador de crédito de Trama">
+      <figure class="mock" aria-label={ui.mockLabel}>
         <div class="mock__head">
           <span class="h3">{trama.mock.title}</span>
           <span class="label-s muted">{trama.mock.country}</span>
@@ -43,7 +46,7 @@ import { trama, pastWork } from '../data/content';
           <span class="label-s">{trama.mock.resultLabel}</span>
           <span class="h2">{trama.mock.result}</span>
         </div>
-        <figcaption class="sr-only">Monto de 20 millones de pesos, 18 % efectivo anual a 36 meses: cuota mensual estimada de 709.736 pesos.</figcaption>
+        <figcaption class="sr-only">{ui.mockCaption}</figcaption>
       </figure>
     </article>
 

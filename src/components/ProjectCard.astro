@@ -1,12 +1,14 @@
 ---
 import Icon from './Icon.astro';
-import type { PastProject } from '../data/content';
+import { getContent } from '../i18n';
+import type { PastProject } from '../i18n/types';
 
 interface Props {
   project: PastProject;
   own?: boolean;
 }
 const { project, own = false } = Astro.props;
+const { ui } = getContent(Astro.currentLocale);
 ---
 
 <li class="pc-item" data-reveal>
@@ -17,7 +19,7 @@ const { project, own = false } = Astro.props;
     </span>
     <span class="h3">{project.name}</span>
     <span class="body-s muted">{project.meta}</span>
-    <span class="sr-only">(abre en una pestaña nueva)</span>
+    <span class="sr-only">{ui.newTab}</span>
   </a>
 </li>
 

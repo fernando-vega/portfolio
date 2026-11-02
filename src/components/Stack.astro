@@ -1,18 +1,23 @@
 ---
 import SectionLabel from './SectionLabel.astro';
 import Tag from './Tag.astro';
-import { stack } from '../data/content';
+import Icon from './Icon.astro';
+import { getContent } from '../i18n';
+
+const { stack } = getContent(Astro.currentLocale);
+const groups = stack.groups.filter((g) => !g.featured);
+const featured = stack.groups.find((g) => g.featured);
 ---
 
 <section class="sheet" id="stack" aria-labelledby="stack-title">
   <div class="sheet__content container stk">
     <header class="stk__head">
-      <SectionLabel number="05" title="Stack" />
+      <SectionLabel number="05" title={stack.label} />
       <h2 class="h2" id="stack-title" data-reveal>{stack.title}</h2>
       <p class="body-l muted" data-reveal>{stack.intro}</p>
     </header>
     <ul class="groups">
-      {stack.groups.map((g, i) => (
+      {groups.map((g, i) => (
         <li class="group" data-reveal>
           <span class="label-s accent">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="h3">{g.title}</h3>
@@ -20,6 +25,30 @@ import { stack } from '../data/content';
         </li>
       ))}
     </ul>
+
+    {featured && (
+      <article class="ai" data-reveal aria-labelledby="ai-title">
+        <div class="ai__head">
+          <span class="ai__icon"><Icon name="ai" size={28} /></span>
+          <div>
+            <span class="label-s accent">{String(groups.length + 1).padStart(2, '0')}</span>
+            <h3 class="h3" id="ai-title">{featured.title}</h3>
+          </div>
+        </div>
+        <div class="ai__cols">
+          <div class="ai__col">
+            {featured.toolsTitle && <p class="label-s muted">{featured.toolsTitle}</p>}
+            <ul class="group__tags">{featured.items.map((t) => <Tag label={t} />)}</ul>
+          </div>
+          {featured.methods && (
+            <div class="ai__col">
+              {featured.methodsTitle && <p class="label-s muted">{featured.methodsTitle}</p>}
+              <ul class="group__tags">{featured.methods.map((t) => <Tag label={t} />)}</ul>
+            </div>
+          )}
+        </div>
+      </article>
+    )}
   </div>
 </section>
 
@@ -37,12 +66,40 @@ import { stack } from '../data/content';
     border: 1px solid var(--border);
   }
   .group__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .ai {
+    display: grid;
+    gap: 24px;
+    margin-top: -24px;
+    padding: 32px;
+    border-radius: 20px;
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(45deg, var(--brand-green), var(--brand-blue)) border-box;
+  }
+  .ai__head { display: flex; align-items: center; gap: 16px; }
+  .ai__head > div { display: grid; gap: 4px; }
+  .ai__icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgb(68 206 162 / 0.12);
+    color: var(--accent);
+  }
+  .ai__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .ai__col { display: grid; gap: 12px; align-content: start; }
+
   @media (max-width: 1023px) {
     .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ai { margin-top: 0; }
   }
   @media (max-width: 599px) {
     .stk { gap: 24px; }
     .groups { grid-template-columns: 1fr; gap: 12px; }
-    .group { padding: 24px; }
+    .group, .ai { padding: 24px; }
+    .ai__cols { grid-template-columns: 1fr; gap: 20px; }
   }
 </style>

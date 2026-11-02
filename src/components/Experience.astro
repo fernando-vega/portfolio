@@ -2,16 +2,16 @@
 import SectionLabel from './SectionLabel.astro';
 import Button from './Button.astro';
 import Tag from './Tag.astro';
-import { experience } from '../data/content';
+import { getContent, asset } from '../i18n';
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const { experience, ui, meta } = getContent(Astro.currentLocale);
 const jobs = experience.jobs;
 const total = String(jobs.length).padStart(2, '0');
 const year = (s: string) => s.split(' ').pop() ?? s;
 const span = (start: string, end: string, current?: boolean) => {
   const a = year(start);
-  const b = current ? 'Hoy' : year(end);
-  return a === b ? a : `${a} — ${b}`;
+  const b = current ? ui.present : year(end);
+  return a === b ? a : `${a} – ${b}`;
 };
 const first = jobs[0];
 const MOBILE_VISIBLE = 3;
@@ -20,14 +20,14 @@ const MOBILE_VISIBLE = 3;
 <section class="sheet sheet--surface" id="experiencia" aria-labelledby="experiencia-title">
   <div class="sheet__content container xp">
     <aside class="xp__side">
-      <SectionLabel number="02" title="Experiencia" />
+      <SectionLabel number="02" title={experience.label} />
       <h2 class="h2" id="experiencia-title">{experience.title}</h2>
       <p class="body-l muted">{experience.intro}</p>
-      <Button variant="outline" href={`${base}CV.pdf`} download>Descargar CV</Button>
+      <Button variant="outline" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv}</Button>
 
       <div class="progress" aria-hidden="true">
         <div class="progress__head">
-          <span class="label-s muted">Recorriendo</span>
+          <span class="label-s muted">{ui.progressLabel}</span>
           <span class="label-s accent"><span data-progress-n>01</span> / {total}</span>
         </div>
         <p class="h3 progress__now" data-progress-label>{span(first.start, first.end, first.current)} · {first.company}</p>
@@ -43,7 +43,7 @@ const MOBILE_VISIBLE = 3;
           data-label={`${span(job.start, job.end, job.current)} · ${job.company}`}
         >
           <p class:list={['label-s job__dates', job.current ? 'accent' : 'muted']}>
-            {job.start} — {job.end}
+            {job.start} – {job.end}
           </p>
           <div class="job__rail" aria-hidden="true"><span class="job__dot"></span><span class="job__line"></span></div>
           <div class="job__body">
@@ -56,7 +56,7 @@ const MOBILE_VISIBLE = 3;
       ))}
     </ol>
 
-    <button class="xp__more label-m" type="button" hidden aria-expanded="false">Ver trayectoria completa</button>
+    <button class="xp__more label-m" type="button" hidden aria-expanded="false">{ui.showFullCareer}</button>
   </div>
 </section>
 

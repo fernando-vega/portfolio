@@ -1,12 +1,14 @@
 ---
 import SectionLabel from './SectionLabel.astro';
-import { about } from '../data/content';
+import { getContent } from '../i18n';
+
+const { about } = getContent(Astro.currentLocale);
 ---
 
 <section class="sheet" id="sobre-mi" aria-labelledby="sobre-mi-title">
   <div class="sheet__content container about">
     <div class="about__head">
-      <SectionLabel number="01" title="Sobre mí" />
+      <SectionLabel number="01" title={about.label} />
     </div>
     <div class="about__row">
       <div class="about__sticky">

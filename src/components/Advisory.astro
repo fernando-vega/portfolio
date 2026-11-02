@@ -2,14 +2,16 @@
 import SectionLabel from './SectionLabel.astro';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import { advisory, contact } from '../data/content';
+import { getContent } from '../i18n';
+
+const { advisory, contact, ui } = getContent(Astro.currentLocale);
 ---
 
 <section class="sheet sheet--surface" id="asesoria" aria-labelledby="asesoria-title">
   <div class="sheet__content container adv">
     <header class="adv__head">
       <div class="adv__title">
-        <SectionLabel number="04" title="Asesoría" />
+        <SectionLabel number="04" title={advisory.label} />
         <h2 class="h2" id="asesoria-title" data-reveal>{advisory.title}</h2>
       </div>
       <p class="body-l muted" data-reveal>{advisory.intro}</p>
@@ -26,13 +28,13 @@ import { advisory, contact } from '../data/content';
     </ul>
 
     <div class="how" data-reveal>
-      <p class="label-m accent">Cómo trabajo</p>
+      <p class="label-m accent">{ui.howIWork}</p>
       <ol class="how__steps">
         {advisory.steps.map((s, i) => (
           <li><span class="how__n label-s">{i + 1}</span><span class="body-s">{s}</span></li>
         ))}
       </ol>
-      <Button href={contact.advisory}>Agenda una conversación</Button>
+      <Button href={contact.advisoryMailto}>{ui.bookCall}</Button>
     </div>
   </div>
 </section>
@@ -46,7 +48,7 @@ import { advisory, contact } from '../data/content';
     align-items: end;
   }
   .adv__title { display: grid; gap: 24px; }
-  .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
   .service {
     display: grid;
     gap: 16px;
