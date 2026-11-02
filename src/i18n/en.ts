@@ -61,13 +61,15 @@ export const en: SiteContent = {
   profile: {
     name: 'Fernando Vega',
     headline: 'I take software from idea to production.',
-    role: 'Systems and Computer Engineer · Full Stack',
+    role: 'Systems and Computer Engineer\u00A0·\u00A0Full\u00A0Stack',
     org: 'Digital Division, Banco de Bogotá',
     intro:
       '12+ years building web products and 5+ in digital banking. I analyze the problem, design the architecture, then build, test, and deploy on AWS. Colombia · Remote.',
     introShort:
       '12+ years building web products and 5+ in digital banking. From analysis to deployment. Colombia · Remote.',
     lifecycle: ['Analysis', 'Planning', 'Architecture', 'Development', 'Testing', 'Deployment'],
+    aiTag: 'AI-assisted',
+    aiTagLabel: 'Every stage assisted by AI agents',
     email,
     social: {
       linkedin: 'https://www.linkedin.com/in/fernando-vega-p/',

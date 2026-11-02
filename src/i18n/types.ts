@@ -91,6 +91,8 @@ export interface SiteContent {
     intro: string;
     introShort: string;
     lifecycle: string[];
+    aiTag: string;
+    aiTagLabel: string;
     email: string;
     social: { linkedin: string; github: string };
   };

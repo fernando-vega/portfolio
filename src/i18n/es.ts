@@ -60,13 +60,15 @@ export const es: SiteContent = {
   profile: {
     name: 'Fernando Vega',
     headline: 'Llevo el software de la idea a producción.',
-    role: 'Ingeniero de Sistemas y Computación · Full Stack',
+    role: 'Ingeniero de Sistemas y Computación\u00A0·\u00A0Full\u00A0Stack',
     org: 'Área Digital del Banco de Bogotá',
     intro:
       'Más de 12 años creando productos web y más de 5 en banca digital. Analizo el problema, diseño la arquitectura, construyo, pruebo y despliego en AWS. Colombia · trabajo remoto.',
     introShort:
       'Más de 12 años creando productos web y más de 5 en banca digital. Del análisis al despliegue. Colombia · trabajo remoto.',
     lifecycle: ['Análisis', 'Planeación', 'Arquitectura', 'Desarrollo', 'Pruebas', 'Despliegue'],
+    aiTag: 'Asistido por IA',
+    aiTagLabel: 'Todas las etapas asistidas con agentes de IA',
     email,
     social: {
       linkedin: 'https://www.linkedin.com/in/fernando-vega-p/',

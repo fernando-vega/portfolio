@@ -21,6 +21,9 @@ const { profile, heroChips, ui, meta } = t;
       <h1 class="display-l hero__title">{profile.headline}</h1>
       <ol class="lifecycle" aria-label={ui.lifecycleLabel}>
         {profile.lifecycle.map((s) => <li class="lifecycle__step label-s" data-step>{s}</li>)}
+        <li class="lifecycle__ai label-s" title={profile.aiTagLabel}>
+          <Icon name="ai" size={13} />{profile.aiTag}<span class="sr-only">: {profile.aiTagLabel}</span>
+        </li>
       </ol>
       <p class="h3 hero__role">{profile.role}<br />{profile.org}</p>
       <p class="body-l hero__text">
@@ -117,6 +120,25 @@ const { profile, heroChips, ui, meta } = t;
     border: 1px solid rgb(255 255 255 / 0.28);
     cursor: default;
     transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base);
+  }
+  .lifecycle__ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    color: var(--on-brand);
+    background: rgb(11 13 16 / 0.45);
+    border: 1px solid var(--brand-green);
+    box-shadow: 0 0 14px rgb(68 206 162 / 0.35);
+  }
+  .lifecycle__ai :global(svg) { color: var(--brand-green); }
+  @media (prefers-reduced-motion: no-preference) {
+    .lifecycle__ai { animation: ai-glow 3s ease-in-out infinite; }
+  }
+  @keyframes ai-glow {
+    0%, 100% { box-shadow: 0 0 6px rgb(68 206 162 / 0.25); }
+    50% { box-shadow: 0 0 20px rgb(68 206 162 / 0.6); }
   }
   .lifecycle__step.is-active {
     background: #fff;
