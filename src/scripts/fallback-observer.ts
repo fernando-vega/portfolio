@@ -17,5 +17,5 @@ if (!supportsTimeline && !reduceMotion && 'IntersectionObserver' in window) {
     },
     { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
   );
-  document.querySelectorAll('.sheet, [data-reveal]').forEach((el) => io.observe(el));
+  document.querySelectorAll('.sheet, [data-reveal], [data-card]').forEach((el) => io.observe(el));
 }
