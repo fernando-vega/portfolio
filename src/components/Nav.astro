@@ -1,0 +1,181 @@
+---
+import Icon from './Icon.astro';
+import { nav, profile } from '../data/content';
+---
+
+<nav class="nav container" aria-label="Principal">
+  <a href="#inicio" class="nav__logo" aria-label="Fernando Vega — inicio">
+    <Icon name="logo" size={48} />
+  </a>
+
+  <ul class="nav__links">
+    {nav.map((item) => <li><a class="label-m" href={item.href}>{item.label}</a></li>)}
+  </ul>
+
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="menu" id="menu" hidden>
+  <ol class="menu__list">
+    <li style="--i: 0"><a href="#inicio"><span class="label-s">01</span><span class="h2">Inicio</span></a></li>
+    {nav.map((item, i) => (
+      <li style={`--i: ${i + 1}`}>
+        <a href={item.href}><span class="label-s">{String(i + 2).padStart(2, '0')}</span><span class="h2">{item.label}</span></a>
+      </li>
+    ))}
+  </ol>
+  <div class="menu__foot">
+    <a class="mono-s" href={`mailto:${profile.email}`}>{profile.email}</a>
+    <div class="menu__social">
+      <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+      <a href={profile.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: relative;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+  }
+  .nav__logo { color: var(--on-brand); display: inline-flex; border-radius: 50%; }
+  .nav__links { display: flex; gap: 40px; }
+  .nav__links a {
+    color: var(--on-brand);
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity var(--dur-fast);
+  }
+  .nav__links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+
+  .burger {
+    display: none;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 60;
+  }
+  .burger span {
+    position: absolute;
+    left: 9px;
+    width: 26px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--on-brand);
+    transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast), background-color var(--dur-base);
+  }
+  .burger span:nth-child(1) { top: 14px; }
+  .burger span:nth-child(2) { top: 21px; }
+  .burger span:nth-child(3) { top: 28px; }
+  .burger[aria-expanded='true'] span { background: var(--brand-green); }
+  .burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 120px 20px 48px;
+    background: #101010;
+    clip-path: circle(0 at calc(100% - 42px) 42px);
+    transition: clip-path 400ms var(--ease-out);
+  }
+  .menu.is-open { clip-path: circle(150% at calc(100% - 42px) 42px); }
+  .menu__list { display: grid; gap: 12px; }
+  .menu__list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--on-brand);
+    text-decoration: none;
+  }
+  .menu__list .label-s { color: var(--muted); }
+  .menu__list .h2 { font-size: 40px; transition: color var(--dur-fast), translate var(--dur-fast); }
+  .menu__list a:hover .h2,
+  .menu__list a:focus-visible .h2 { color: var(--accent); translate: 8px 0; }
+  .menu__list li {
+    opacity: 0;
+    translate: 24px 0;
+  }
+  .menu.is-open .menu__list li {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 600ms var(--ease-out), translate 600ms var(--ease-out);
+    transition-delay: calc(200ms + var(--i) * var(--stagger));
+  }
+  .menu__foot { display: grid; gap: 16px; }
+  .menu__foot a { color: var(--on-brand); text-decoration: none; }
+  .menu__social { display: flex; gap: 12px; }
+  .menu__social a {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+
+  @media (max-width: 1023px) {
+    .nav { padding-top: 20px; }
+    .nav__logo :global(svg) { width: 40px; height: 40px; }
+    .nav__links { display: none; }
+    /* botón fijo: el menú se puede abrir desde cualquier punto de la página */
+    .burger {
+      display: block;
+      position: fixed;
+      top: 18px;
+      right: 16px;
+      border-radius: 50%;
+      background: rgb(11 13 16 / 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  }
+  @media (min-width: 1024px) {
+    .menu { display: none !important; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.burger');
+  const menu = document.getElementById('menu');
+  if (btn && menu) {
+    const setOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        menu.hidden = false;
+        requestAnimationFrame(() => menu.classList.add('is-open'));
+        menu.querySelector('a')?.focus({ preventScroll: true });
+      } else {
+        menu.classList.remove('is-open');
+        window.setTimeout(() => (menu.hidden = true), 400);
+      }
+    };
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+  }
+</script>

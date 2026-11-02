@@ -1,0 +1,32 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  onBrand?: boolean;
+}
+const { number, title, onBrand = false } = Astro.props;
+---
+
+<p class:list={['section-label', { 'section-label--on-brand': onBrand }]}>
+  <span class="label-m section-label__n">{number}</span>
+  <span class="section-label__line" aria-hidden="true"></span>
+  <span class="label-m section-label__t">{title}</span>
+</p>
+
+<style>
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label__n { color: var(--accent); }
+  .section-label__t { color: var(--muted); }
+  .section-label__line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-green), var(--brand-blue));
+  }
+  .section-label--on-brand .section-label__n,
+  .section-label--on-brand .section-label__t { color: var(--on-brand); }
+  .section-label--on-brand .section-label__line { background: rgb(255 255 255 / 0.6); }
+</style>

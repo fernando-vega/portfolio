@@ -1,0 +1,111 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { contact, profile } from '../data/content';
+
+const year = new Date().getFullYear();
+---
+
+<section class="sheet contact" id="contacto" aria-labelledby="contacto-title">
+  <div class="sheet__content container contact__inner">
+    <SectionLabel number="06" title="Contacto" onBrand />
+    <h2 class="display-xl" id="contacto-title" data-reveal>¿Construimos<br />algo juntos?</h2>
+    <p class="body-l contact__intro" data-reveal>{contact.intro}</p>
+
+    <div class="contact__actions" data-reveal>
+      <Button variant="dark" href={contact.job}>Tengo una oferta laboral</Button>
+      <Button variant="outline-light" href={contact.advisory}>Necesito asesoría</Button>
+      <div class="contact__social">
+        <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn (abre en una pestaña nueva)"><Icon name="linkedin" /></a>
+        <a href={profile.social.github} target="_blank" rel="noopener" aria-label="GitHub (abre en una pestaña nueva)"><Icon name="github" /></a>
+      </div>
+    </div>
+
+    <p class="contact__email">
+      <a class="mono-s" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <button class="copy mono-s" type="button" data-copy={profile.email}>
+        <Icon name="copy" size={14} /><span data-copy-label>copiar</span>
+      </button>
+      <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
+    </p>
+
+    <footer class="foot">
+      <span class="foot__line" aria-hidden="true"></span>
+      <div class="foot__row">
+        <p class="label-s">© {year} {profile.name}</p>
+        <a class="label-s" href="#inicio">Volver arriba ↑</a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .contact {
+    --sheet-bg: transparent;
+    background: var(--brand-gradient);
+    color: var(--on-brand);
+    padding-bottom: 40px;
+  }
+  .contact__inner { display: grid; gap: 40px; justify-items: start; }
+  .contact__intro { opacity: 0.9; }
+  .contact__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .contact__social { display: flex; gap: 12px; }
+  .contact__social a {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.14);
+    color: var(--on-brand);
+    transition: background-color var(--dur-fast), translate var(--dur-fast) var(--ease-out);
+  }
+  .contact__social a:hover { background: rgb(255 255 255 / 0.28); translate: 0 -2px; }
+  .contact__email { display: flex; align-items: center; gap: 16px; }
+  .contact__email a { color: var(--on-brand); }
+  .copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 0.12);
+    color: var(--on-brand);
+    cursor: pointer;
+  }
+  .copy:hover { background: rgb(255 255 255 / 0.22); }
+
+  .foot { justify-self: stretch; display: grid; gap: 24px; padding-top: 56px; }
+  .foot__line { height: 1px; background: rgb(255 255 255 / 0.25); }
+  .foot__row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot__row a { color: var(--on-brand); text-decoration: none; }
+  .foot__row a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  @media (max-width: 599px) {
+    .contact__inner { gap: 28px; }
+    .contact__actions { display: grid; width: 100%; }
+    .contact__actions :global(.btn) { width: 100%; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const label = btn?.querySelector<HTMLElement>('[data-copy-label]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+  btn?.addEventListener('click', async () => {
+    const value = btn.dataset.copy ?? '';
+    try {
+      await navigator.clipboard.writeText(value);
+      if (label) label.textContent = '¡copiado!';
+      if (status) status.textContent = 'Correo copiado al portapapeles';
+    } catch {
+      if (label) label.textContent = 'no se pudo copiar';
+    }
+    window.setTimeout(() => {
+      if (label) label.textContent = 'copiar';
+      if (status) status.textContent = '';
+    }, 2000);
+  });
+</script>

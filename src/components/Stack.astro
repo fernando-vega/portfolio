@@ -1,0 +1,48 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Tag from './Tag.astro';
+import { stack } from '../data/content';
+---
+
+<section class="sheet" id="stack" aria-labelledby="stack-title">
+  <div class="sheet__content container stk">
+    <header class="stk__head">
+      <SectionLabel number="05" title="Stack" />
+      <h2 class="h2" id="stack-title" data-reveal>{stack.title}</h2>
+      <p class="body-l muted" data-reveal>{stack.intro}</p>
+    </header>
+    <ul class="groups">
+      {stack.groups.map((g, i) => (
+        <li class="group" data-reveal>
+          <span class="label-s accent">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="h3">{g.title}</h3>
+          <ul class="group__tags">{g.items.map((t) => <Tag label={t} />)}</ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stk { display: grid; gap: 48px; }
+  .stk__head { display: grid; gap: 24px; }
+  .groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .group {
+    display: grid;
+    gap: 20px;
+    align-content: start;
+    padding: 28px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .group__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 1023px) {
+    .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 599px) {
+    .stk { gap: 24px; }
+    .groups { grid-template-columns: 1fr; gap: 12px; }
+    .group { padding: 24px; }
+  }
+</style>

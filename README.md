@@ -1,27 +1,44 @@
-# My Personal Portfolio to 2020
+# Fernando Vega — Portafolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.7.
+Sitio personal de Fernando Vega, Ingeniero de Sistemas · Full Stack.
+Publicado en https://fernando-vega.github.io/portfolio/
 
-## Development server
+Construido con [Astro](https://astro.build) (sitio estático, sin framework de UI en el cliente).
+Diseño de referencia en Figma: _Portafolio Fernando Vega — Rediseño 2026_.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Desarrollo
 
-## Code scaffolding
+Requiere Node.js 22.23.4 o superior.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
+npm run dev       # http://localhost:4321/portfolio/
+npm run build     # genera dist/
+npm run preview   # sirve dist/ localmente
+```
 
-## Build
+## Estructura
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+src/
+  data/content.ts      # TODO el contenido (perfil, experiencia, proyectos, asesoría, stack, contacto)
+  components/          # una sección por componente (Hero, About, Experience, Projects, Advisory, Stack, Contact)
+  scripts/             # interacciones: partículas, ciclo de vida, tilt, respaldo de animaciones
+  styles/global.css    # tokens (colores, tipografía, motion), hojas apiladas y animaciones de entrada
+  assets/              # foto (Astro genera AVIF/WebP/JPG en varios tamaños)
+public/                # CV.pdf, favicons, manifest, robots.txt
+```
 
-## Running unit tests
+Para actualizar experiencia, proyectos o textos, edita solo `src/data/content.ts`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Animaciones
 
-## Running end-to-end tests
+- Usan CSS scroll-driven animations (`animation-timeline`) con respaldo por `IntersectionObserver`.
+- Todas respetan `prefers-reduced-motion`.
+- Los valores viven como variables CSS en `src/styles/global.css` (`--sheet-radius`, `--tilt-max`, etc.).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Despliegue
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`.github/workflows/deploy.yml` construye y publica en GitHub Pages en cada push a `master`.
+En **Settings → Pages → Build and deployment → Source** el repositorio debe usar **GitHub Actions**
+(la versión anterior publicaba la carpeta `docs/`).
