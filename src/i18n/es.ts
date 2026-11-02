@@ -15,11 +15,11 @@ export const es: SiteContent = {
     ogLocale: 'es_CO',
     cvFile: 'cv/Juan-Fernando-Vega-CV-ES.pdf',
     cvDownloadName: 'Juan-Fernando-Vega-CV-ES.pdf',
-    jobTitle: 'Ingeniero de Sistemas y Computación · Desarrollador Full Stack',
+    jobTitle: 'Ingeniero de Sistemas y Computación · Desarrollador Full Stack Senior',
     alumniOf: 'Universidad Pedagógica y Tecnológica de Colombia (UPTC)',
     title: 'Fernando Vega · Ingeniero de Sistemas y Computación, Full Stack',
     description:
-      'Ingeniero de Sistemas y Computación, full stack en banca digital. Llevo el software de la idea a producción: análisis, arquitectura, desarrollo, pruebas y despliegue con React, Angular, Node.js, Python y AWS. Creador de Trama.',
+      'Ingeniero de Sistemas y Computación, full stack senior en banca digital. Llevo el software de la idea a producción: análisis, arquitectura, desarrollo, pruebas y despliegue con React, Angular, Node.js, Python y AWS. Creador de Trama.',
     portraitAlt: 'Retrato de Fernando Vega',
   },
 
@@ -61,7 +61,7 @@ export const es: SiteContent = {
     name: 'Fernando Vega',
     headline: 'Llevo el software de la idea a producción.',
     role: 'Ingeniero de Sistemas y Computación',
-    roleTag: 'Full Stack',
+    roleTag: 'Full Stack Senior',
     org: 'Área Digital del Banco de Bogotá',
     intro:
       'Más de 12 años creando productos web y más de 5 en banca digital. Analizo el problema, diseño la arquitectura, construyo, pruebo y despliego en AWS. Colombia · trabajo remoto.',
@@ -116,13 +116,13 @@ export const es: SiteContent = {
         start: 'Jun 2022',
         end: 'Actualidad',
         company: 'Banco de Bogotá',
-        role: 'Desarrollador Full Stack · Área Digital (Analista I)',
+        role: 'Desarrollador Full Stack Senior · Área Digital (Analista I)',
         description:
-          'Desarrollo plataformas web de alto tráfico para clientes del banco, con arquitecturas pensadas para escalar: micro-frontends en React, Angular y Astro, renderizado SSR/CSR, servicios en Node.js y Python sobre PostgreSQL, e infraestructura como código en AWS con Terraform y CI/CD.',
-        tags: ['React', 'Angular', 'Astro', 'Micro-frontends', 'SSR / CSR', 'Node.js', 'Python', 'PostgreSQL', 'AWS', 'Terraform', 'CI/CD'],
+          'Desarrollo plataformas web de alto tráfico para clientes del banco, con arquitecturas pensadas para escalar: micro-frontends en React, Angular, Astro y Stencil, renderizado SSR/CSR, servicios, librerías y APIs documentadas con OpenAPI (OAS) en Node.js y Python sobre PostgreSQL, e infraestructura como código en AWS serverless con Terraform y CI/CD.',
+        tags: ['React', 'Angular', 'Astro', 'Stencil', 'Micro-frontends', 'SSR / CSR', 'Node.js', 'Python', 'OpenAPI', 'PostgreSQL', 'AWS Serverless', 'Terraform', 'CI/CD'],
         current: true,
       },
-      { start: 'Ene 2022', end: 'May 2022', company: 'RobinFood', role: 'Desarrollador Frontend' },
+      { start: 'Ene 2022', end: 'Jun 2022', company: 'RobinFood', role: 'Desarrollador Frontend' },
       {
         start: 'Oct 2020',
         end: 'Ene 2022',
@@ -132,7 +132,7 @@ export const es: SiteContent = {
       },
       {
         start: 'Feb 2020',
-        end: 'Sep 2020',
+        end: 'Oct 2020',
         company: 'Tita Media',
         role: 'Desarrollador Frontend',
         description: 'Desarrollé el sitio web de Titamedia y colaboré en e-commerce en VTEX para marcas como Mario Hernández, Bata, Prochampions, Panamericana, Samsung Colombia y Totto.',
@@ -152,16 +152,16 @@ export const es: SiteContent = {
         description: 'Desarrollé el frontend de Colombia Travel — Birds, sitio de turismo de naturaleza, y colaboré en sitios y campañas para marcas como Bancolombia, Seguros Bolívar y Marca País Colombia.',
       },
       {
-        start: 'Nov 2015',
-        end: 'Jul 2018',
+        start: 'Nov 2014',
+        end: 'Jul 2019',
         company: 'DoD Media Group',
         role: 'Ingeniero de Software',
         description:
-          'En paralelo con SIA Software: desarrollé Inmobiliaria Contreras, Dromedario y Boyacá se escucha, y colaboré en Hotel Calle Principal.',
+          'En paralelo con SIA Software y Quadi: desarrollé Inmobiliaria Contreras, Dromedario y Boyacá se escucha, y colaboré en Hotel Calle Principal.',
       },
       {
-        start: 'Feb 2014',
-        end: 'Dic 2017',
+        start: 'Ene 2014',
+        end: 'Jun 2018',
         company: 'SIA Software',
         role: 'Cofundador e Ingeniero de Software',
         description: 'Cofundé un estudio de software y acompañé a más de 10 empresas a mejorar sus procesos con software a la medida.',
@@ -261,9 +261,9 @@ export const es: SiteContent = {
     title: 'Herramientas con las que trabajo',
     intro: 'Elijo la herramienta según el problema, no al revés.',
     groups: [
-      { title: 'Frontend', items: ['React', 'Angular', 'Astro', 'Micro-frontends', 'SSR', 'CSR'] },
-      { title: 'Backend y datos', items: ['Node.js', 'Python', 'PostgreSQL'] },
-      { title: 'Cloud y DevOps', items: ['AWS', 'Terraform', 'CI/CD', 'Git'] },
+      { title: 'Frontend', items: ['React', 'Angular', 'Astro', 'Stencil', 'Micro-frontends', 'SSR', 'CSR'] },
+      { title: 'Backend y datos', items: ['Node.js', 'Python', 'APIs con OpenAPI (OAS)', 'PostgreSQL'] },
+      { title: 'Cloud y DevOps', items: ['AWS', 'Serverless', 'Terraform', 'CI/CD', 'Git'] },
       { title: 'Arquitectura y diseño', items: ['Arquitectura de software', 'Figma'] },
       {
         title: 'Ingeniería con IA',
