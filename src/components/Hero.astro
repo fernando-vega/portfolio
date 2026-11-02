@@ -16,21 +16,15 @@ const roleLast = roleWords.pop();
 const roleHead = roleWords.join(' ');
 ---
 
+<Nav />
 <header class="hero" id="inicio">
   <canvas class="hero__particles" aria-hidden="true"></canvas>
   <div class="hero__shade" aria-hidden="true"></div>
-  <Nav />
 
   <div class="hero__inner container">
     <div class="hero__intro">
       <p class="label-m">{ui.greeting}</p>
       <h1 class="display-l hero__title">{profile.headline}</h1>
-      <ol class="lifecycle" aria-label={ui.lifecycleLabel}>
-        {profile.lifecycle.map((s) => <li class="lifecycle__step label-s" data-step>{s}</li>)}
-        <li class="lifecycle__ai label-s" title={profile.aiTagLabel}>
-          <Icon name="ai" size={13} />{profile.aiTag}<span class="sr-only">: {profile.aiTagLabel}</span>
-        </li>
-      </ol>
       <p class="h3 hero__role">
         {roleHead}{' '}<span class="nowrap">{roleLast} · {profile.roleTag}</span><br />{profile.org}
       </p>
@@ -41,8 +35,8 @@ const roleHead = roleWords.join(' ');
       <div class="hero__ctas">
         <Button variant="dark" href="#contacto">{ui.ctaTalk}</Button>
         <Button variant="outline-light" href="#proyectos">{ui.ctaProjects}</Button>
+        <a class="label-s hero__cv" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv} <Icon name="download" size={16} /></a>
       </div>
-      <a class="label-s hero__cv" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv} <Icon name="download" size={14} /></a>
     </div>
 
     <div class="photo" data-tilt>
@@ -55,7 +49,7 @@ const roleHead = roleWords.join(' ');
           fallbackFormat="jpg"
           quality={72}
           widths={[360, 480, 720, 960]}
-          sizes="(max-width: 1023px) calc(100vw - 40px), 480px"
+          sizes="(max-width: 1023px) calc(100vw - 40px), 440px"
           loading="eager"
           fetchpriority="high"
           class="photo__img"
@@ -66,6 +60,16 @@ const roleHead = roleWords.join(' ');
     </div>
   </div>
 
+  <div class="hero__band container">
+    <p class="label-s hero__band-label" aria-hidden="true">{ui.lifecycleLabel}</p>
+    <ol class="lifecycle" aria-label={ui.lifecycleLabel}>
+      {profile.lifecycle.map((s) => <li class="lifecycle__step label-s" data-step>{s}</li>)}
+      <li class="lifecycle__ai label-s" title={profile.aiTagLabel}>
+        <Icon name="ai" size={16} />{profile.aiTag}<span class="sr-only">: {profile.aiTagLabel}</span>
+      </li>
+    </ol>
+  </div>
+
   <a class="scroll-cue" href="#sobre-mi" aria-label={ui.scrollCue}>
     <span class="scroll-cue__label label-m" aria-hidden="true">{ui.scrollCue}</span>
     <span class="scroll-cue__track" aria-hidden="true"><span class="scroll-cue__dot"></span></span>
@@ -74,9 +78,12 @@ const roleHead = roleWords.join(' ');
 
 <style>
   .hero {
-    position: relative;
-    min-height: max(100svh, 760px);
-    padding-bottom: calc(var(--sheet-radius) + 48px);
+    /* position: sticky viene de global.css (tarjetas apiladas) */
+    min-height: max(100svh, 720px);
+    display: flex;
+    flex-direction: column;
+    padding-top: 112px; /* espacio para el menú */
+    padding-bottom: calc(var(--sheet-radius) + 32px);
     color: var(--on-brand);
     background: var(--brand-gradient);
     overflow: clip;
@@ -97,28 +104,52 @@ const roleHead = roleWords.join(' ');
   .hero__inner {
     position: relative;
     z-index: 1;
+    flex: 1;
     display: grid;
-    grid-template-columns: minmax(0, 720px) minmax(0, 480px);
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 40px;
-    padding-top: clamp(48px, 8vh, 96px);
-    padding-right: calc(var(--gutter) + 40px);
+    gap: clamp(40px, 6vw, 112px);
+    padding-block: 16px 24px;
+    padding-right: calc(var(--gutter) + 56px); /* deja libre la señal de scroll */
   }
-  .hero__intro { display: grid; gap: 24px; justify-items: start; }
-  .hero__title { max-width: 640px; }
+  .hero__intro { display: grid; gap: 28px; justify-items: start; max-width: 660px; }
+  .hero__title { font-size: clamp(40px, 4.3vw, 64px); max-width: 620px; }
   .hero__role { max-width: 620px; }
   .hero__role .nowrap { white-space: nowrap; }
-  .hero__text { max-width: 620px; opacity: 0.9; }
+  .hero__text { max-width: 600px; opacity: 0.9; }
   .hero__text--short { display: none; }
-  .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero__ctas { display: flex; align-items: center; gap: 16px 20px; flex-wrap: wrap; padding-top: 4px; }
   .hero__cv {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-left: 4px;
     color: var(--on-brand);
-    text-underline-offset: 4px;
+    text-underline-offset: 6px;
   }
+
+  /* franja inferior: etapas del ciclo de vida */
+  .hero__band {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 32px;
+    padding-top: 24px;
+    padding-right: calc(var(--gutter) + 56px);
+  }
+  .hero__band::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: var(--gutter);
+    right: calc(var(--gutter) + 56px);
+    height: 1px;
+    background: rgb(255 255 255 / 0.22);
+  }
+  .hero__band-label { opacity: 0.8; }
 
   /* ciclo de vida */
   .lifecycle { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -136,18 +167,19 @@ const roleHead = roleWords.join(' ');
     gap: 6px;
     padding: 7px 12px;
     border-radius: 999px;
-    color: var(--on-brand);
-    background: rgb(11 13 16 / 0.45);
-    border: 1px solid var(--brand-green);
-    box-shadow: 0 0 14px rgb(68 206 162 / 0.35);
+    color: #fff;
+    background: rgb(11 13 16 / 0.82);
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px rgb(255 255 255 / 0.35);
   }
   .lifecycle__ai :global(svg) { color: var(--brand-green); }
   @media (prefers-reduced-motion: no-preference) {
-    .lifecycle__ai { animation: ai-glow 3s ease-in-out infinite; }
+    .lifecycle__ai { animation: ai-glow 2.4s ease-in-out infinite; }
   }
+  /* resplandor blanco: contrasta con el degradado verde-azul del hero */
   @keyframes ai-glow {
-    0%, 100% { box-shadow: 0 0 6px rgb(68 206 162 / 0.25); }
-    50% { box-shadow: 0 0 20px rgb(68 206 162 / 0.6); }
+    0%, 100% { box-shadow: 0 0 4px rgb(255 255 255 / 0.25), 0 0 0 0 rgb(255 255 255 / 0); }
+    50% { box-shadow: 0 0 18px rgb(255 255 255 / 0.85), 0 0 0 4px rgb(255 255 255 / 0.18); }
   }
   .lifecycle__step.is-active {
     background: #fff;
@@ -160,8 +192,7 @@ const roleHead = roleWords.join(' ');
     --rx: 0deg;
     --ry: 0deg;
     position: relative;
-    width: 100%;
-    max-width: 480px;
+    width: clamp(300px, calc((100svh - 360px) * 0.857), 440px);
     justify-self: end;
     perspective: 900px;
   }
@@ -294,16 +325,26 @@ const roleHead = roleWords.join(' ');
   @keyframes zoom { to { scale: 1.08; } }
   @keyframes fade-out { to { opacity: 0; visibility: hidden; } }
 
+  /* pantallas bajas (laptops 720–820 px de alto): todo el hero entra sin scroll */
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .hero { padding-top: 92px; padding-bottom: calc(var(--sheet-radius) + 20px); }
+    .hero__inner { padding-block: 0 8px; }
+    .hero__intro { gap: 18px; }
+    .hero__title { font-size: clamp(40px, 3.8vw, 54px); }
+    .hero__band { margin-top: 16px; padding-top: 16px; }
+    .photo { width: clamp(280px, calc((100svh - 300px) * 0.857), 400px); }
+  }
+
   /* ---------- tablet / mobile ---------- */
   @media (max-width: 1023px) {
-    .hero { min-height: auto; padding-bottom: calc(var(--sheet-radius) + 56px); }
+    .hero { min-height: auto; padding-top: 88px; padding-bottom: calc(var(--sheet-radius) + 40px); }
     .hero__inner {
       grid-template-columns: 1fr;
-      gap: 28px;
-      padding-top: 24px;
+      gap: 32px;
+      padding-block: 8px 0;
       padding-right: var(--gutter);
     }
-    .photo { order: -1; max-width: 560px; justify-self: stretch; perspective: none; }
+    .photo { order: -1; width: 100%; max-width: 560px; justify-self: stretch; perspective: none; }
     .photo__card { aspect-ratio: 350 / 380; }
     .photo__card::after {
       content: '';
@@ -315,9 +356,13 @@ const roleHead = roleWords.join(' ');
     }
     .photo__glow { display: none; }
     .chip { padding: 8px 12px; gap: 8px; }
-    .chip--a { left: 16px; top: auto; bottom: 60px; }
+    .chip--a { left: 16px; top: auto; bottom: 64px; }
     .chip--b { left: 16px; right: auto; bottom: 16px; }
+    .hero__intro { gap: 24px; }
     .hero__ctas { display: grid; width: 100%; }
+    .hero__cv { margin: 4px 0 0; }
+    .hero__band { padding-right: var(--gutter); margin-top: 40px; }
+    .hero__band::before { right: var(--gutter); }
     .scroll-cue { display: none; }
   }
   @media (max-width: 599px) {
@@ -325,7 +370,7 @@ const roleHead = roleWords.join(' ');
     .hero__role { font-size: 20px; }
     .hero__text--long { display: none; }
     .hero__text--short { display: inline; }
-    .lifecycle__step { font-size: 11px; padding: 6px 10px; }
+    .lifecycle__step, .lifecycle__ai { padding: 6px 10px; }
   }
 </style>
 

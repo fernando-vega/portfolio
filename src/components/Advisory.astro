@@ -18,8 +18,9 @@ const { advisory, contact, ui } = getContent(Astro.currentLocale);
     </header>
 
     <ul class="services">
-      {advisory.services.map((s) => (
-        <li class="service" data-reveal>
+      {advisory.services.map((s, i) => (
+        <li class="service" data-card style={`--i: ${i}`}>
+          <span class="service__glow" aria-hidden="true"></span>
           <span class="service__icon"><Icon name={s.icon} size={28} /></span>
           <h3 class="h3">{s.title}</h3>
           <p class="muted">{s.text}</p>
@@ -49,7 +50,15 @@ const { advisory, contact, ui } = getContent(Astro.currentLocale);
   }
   .adv__title { display: grid; gap: 24px; }
   .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .services { perspective: 900px; }
   .service {
+    --rx: 0deg;
+    --ry: 0deg;
+    --mx: 50%;
+    --my: 50%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: grid;
     gap: 16px;
     align-content: start;
@@ -57,6 +66,18 @@ const { advisory, contact, ui } = getContent(Astro.currentLocale);
     border-radius: 20px;
     background: var(--bg);
     border: 1px solid var(--border);
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 400ms var(--ease-out), border-color var(--dur-base), box-shadow var(--dur-base);
+  }
+  /* luz que sigue al cursor (como el resplandor de la foto) */
+  .service__glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(260px circle at var(--mx) var(--my), rgb(68 206 162 / 0.22), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--dur-base);
+    pointer-events: none;
   }
   .service__icon {
     display: grid;
@@ -66,6 +87,39 @@ const { advisory, contact, ui } = getContent(Astro.currentLocale);
     border-radius: 14px;
     background: rgb(68 206 162 / 0.12);
     color: var(--accent);
+    transition: box-shadow var(--dur-base), translate var(--dur-base) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .service:hover {
+      border-color: rgb(68 206 162 / 0.55);
+      box-shadow: 0 24px 48px rgb(0 0 0 / 0.35);
+    }
+    .service:hover .service__glow { opacity: 1; }
+    .service:hover .service__icon { box-shadow: 0 0 22px rgb(68 206 162 / 0.45); translate: 0 -2px; }
+  }
+
+  /* entrada: se descubre de abajo hacia arriba con leve zoom, escalonada */
+  @keyframes card-in {
+    from { clip-path: inset(100% 0 0 0 round 20px); scale: 1.04; }
+    to { clip-path: inset(0 0 0 0 round 20px); scale: 1; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .service {
+        animation: card-in linear both;
+        animation-timeline: view();
+        animation-range: entry calc(5% + var(--i) * 12%) entry calc(60% + var(--i) * 12%);
+      }
+    }
+    @supports not (animation-timeline: view()) {
+      :global(.js) .service {
+        clip-path: inset(100% 0 0 0 round 20px);
+        scale: 1.04;
+        transition: clip-path 900ms var(--ease-out), scale 900ms var(--ease-out), transform 400ms var(--ease-out);
+        transition-delay: calc(var(--i) * 120ms);
+      }
+      :global(.js) .service.is-in { clip-path: inset(0 0 0 0 round 20px); scale: 1; }
+    }
   }
   .how {
     display: grid;
@@ -101,3 +155,19 @@ const { advisory, contact, ui } = getContent(Astro.currentLocale);
     .how { padding: 24px; }
   }
 </style>
+
+<script>
+  import { initTilt } from '../scripts/hero';
+
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-card]').forEach((card) => {
+    initTilt(card);
+    if (!fine || reduce) return;
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+</script>

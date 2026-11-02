@@ -52,7 +52,11 @@ const altHref = localeHome(ui.langSwitch.hreflang);
 
 <style>
   .nav {
-    position: relative;
+    /* fuera del hero para que el menú quede siempre sobre las secciones apiladas */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 60;
     display: flex;
     align-items: center;

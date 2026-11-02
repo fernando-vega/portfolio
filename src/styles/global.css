@@ -179,7 +179,7 @@ ol {
   line-height: 1.6;
 }
 .body-s {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .label-m,
@@ -190,16 +190,16 @@ ol {
   line-height: 1.4;
 }
 .label-m {
-  font-size: 14px;
-  letter-spacing: 0.12em;
+  font-size: 16px;
+  letter-spacing: 0.1em;
 }
 .label-s {
-  font-size: 12px;
-  letter-spacing: 0.1em;
+  font-size: 16px;
+  letter-spacing: 0.06em;
 }
 .mono-s {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 16px;
 }
 .muted {
   color: var(--muted);
@@ -215,8 +215,16 @@ body {
   timeline-scope: --sheet-1, --sheet-2, --sheet-3, --sheet-4, --sheet-5, --sheet-6;
 }
 
+/* Tarjetas que se superponen: cada sección queda fija (sticky) cuando su borde
+   inferior llega al final de la pantalla, y la siguiente sube y la tapa.
+   --stick-top lo calcula src/scripts/stack-cards.ts según la altura de cada sección. */
+.hero,
 .sheet {
-  position: relative;
+  position: sticky;
+  top: var(--stick-top, 0px);
+}
+
+.sheet {
   margin-top: calc(var(--sheet-radius) * -1);
   border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
   background: var(--sheet-bg, var(--bg));
@@ -250,12 +258,12 @@ body {
 
 @keyframes sheet-rise {
   from {
-    translate: 0 var(--sheet-rise);
     border-radius: calc(var(--sheet-radius) * 2) calc(var(--sheet-radius) * 2) 0 0;
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 0.2);
   }
   to {
-    translate: 0 0;
     border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+    box-shadow: 0 -32px 64px rgb(0 0 0 / 0.55);
   }
 }
 @keyframes line-draw {
@@ -287,7 +295,7 @@ body {
       animation: behind linear both;
       animation-range: entry 0% entry 100%;
     }
-    .hero > .hero__inner { transform-origin: 50% 100%; animation: behind linear both; animation-timeline: --sheet-1; animation-range: entry 0% entry 100%; }
+    .hero > :is(.hero__inner, .hero__band) { transform-origin: 50% 100%; animation: behind linear both; animation-timeline: --sheet-1; animation-range: entry 0% entry 100%; }
     .sheet:nth-of-type(1) > .sheet__content { animation-timeline: --sheet-2; }
     .sheet:nth-of-type(2) > .sheet__content { animation-timeline: --sheet-3; }
     .sheet:nth-of-type(3) > .sheet__content { animation-timeline: --sheet-4; }
@@ -298,15 +306,10 @@ body {
 
   /* Respaldo sin scroll-driven animations: IntersectionObserver añade .is-in */
   @supports not (animation-timeline: view()) {
-    .js .sheet {
-      translate: 0 var(--sheet-rise);
-      transition: translate var(--dur-slow) var(--ease-out);
-    }
     .js .sheet::before {
       transform: scaleX(0);
       transition: transform 900ms var(--ease-out) 150ms;
     }
-    .js .sheet.is-in { translate: 0 0; }
     .js .sheet.is-in::before { transform: scaleX(1); }
   }
 }
