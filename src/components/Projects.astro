@@ -44,7 +44,7 @@ const { trama, pastWork } = projects;
         ))}
         <div class="mock__result">
           <span class="label-s">{trama.mock.resultLabel}</span>
-          <span class="h2">{trama.mock.result}</span>
+          <span class="h2 mock__value">{trama.mock.result}</span>
         </div>
         <figcaption class="sr-only">{ui.mockCaption}</figcaption>
       </figure>
@@ -98,7 +98,7 @@ const { trama, pastWork } = projects;
     background: rgb(68 206 162 / 0.14);
     color: var(--accent);
   }
-  .kpis { display: flex; gap: 40px; }
+  .kpis { display: flex; flex-wrap: wrap; gap: 16px 40px; }
   .kpis li { display: grid; gap: 4px; }
   .feature__ctas { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 8px; }
 
@@ -120,6 +120,7 @@ const { trama, pastWork } = projects;
     background: var(--surface-2);
     border: 1px solid var(--border);
   }
+  .mock__value { white-space: nowrap; font-size: clamp(30px, 9vw, 44px); }
   .mock__result {
     display: grid;
     gap: 4px;
@@ -145,7 +146,7 @@ const { trama, pastWork } = projects;
     .projects { gap: 24px; }
     .feature { padding: 24px; }
     .feature__name { font-size: 48px; }
-    .kpis { gap: 28px; }
+    .kpis { gap: 12px 28px; }
     .feature__ctas { display: grid; width: 100%; }
     .past__grid { grid-template-columns: 1fr; gap: 12px; }
   }

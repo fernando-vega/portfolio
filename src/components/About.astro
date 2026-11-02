@@ -76,4 +76,8 @@ const { about } = getContent(Astro.currentLocale);
     .stat__l { display: none; }
     .stat__s { display: block; }
   }
+  @media (max-width: 419px) {
+    .stats { grid-template-columns: 1fr; gap: 8px; }
+    .stat { grid-template-columns: auto 1fr; align-items: baseline; gap: 12px; padding: 14px 16px; }
+  }
 </style>
