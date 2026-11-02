@@ -87,6 +87,8 @@ export interface SiteContent {
     name: string;
     headline: string;
     role: string;
+    /** Etiqueta que se muestra tras " · " y nunca se separa del rol (CSS nowrap). */
+    roleTag: string;
     org: string;
     intro: string;
     introShort: string;

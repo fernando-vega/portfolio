@@ -60,7 +60,8 @@ export const es: SiteContent = {
   profile: {
     name: 'Fernando Vega',
     headline: 'Llevo el software de la idea a producción.',
-    role: 'Ingeniero de Sistemas y Computación\u00A0·\u00A0Full\u00A0Stack',
+    role: 'Ingeniero de Sistemas y Computación',
+    roleTag: 'Full Stack',
     org: 'Área Digital del Banco de Bogotá',
     intro:
       'Más de 12 años creando productos web y más de 5 en banca digital. Analizo el problema, diseño la arquitectura, construyo, pruebo y despliego en AWS. Colombia · trabajo remoto.',

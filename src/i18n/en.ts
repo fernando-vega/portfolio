@@ -61,7 +61,8 @@ export const en: SiteContent = {
   profile: {
     name: 'Fernando Vega',
     headline: 'I take software from idea to production.',
-    role: 'Systems and Computer Engineer\u00A0·\u00A0Full\u00A0Stack',
+    role: 'Systems and Computer Engineer',
+    roleTag: 'Full Stack',
     org: 'Digital Division, Banco de Bogotá',
     intro:
       '12+ years building web products and 5+ in digital banking. I analyze the problem, design the architecture, then build, test, and deploy on AWS. Colombia · Remote.',

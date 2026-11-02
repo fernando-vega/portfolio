@@ -8,6 +8,12 @@ import { getContent, asset } from '../i18n';
 
 const t = getContent(Astro.currentLocale);
 const { profile, heroChips, ui, meta } = t;
+
+// La última palabra del rol + " · Full Stack" viajan juntas (CSS nowrap),
+// así el separador "·" nunca queda al inicio de una línea.
+const roleWords = profile.role.split(' ');
+const roleLast = roleWords.pop();
+const roleHead = roleWords.join(' ');
 ---
 
 <header class="hero" id="inicio">
@@ -25,7 +31,9 @@ const { profile, heroChips, ui, meta } = t;
           <Icon name="ai" size={13} />{profile.aiTag}<span class="sr-only">: {profile.aiTagLabel}</span>
         </li>
       </ol>
-      <p class="h3 hero__role">{profile.role}<br />{profile.org}</p>
+      <p class="h3 hero__role">
+        {roleHead}{' '}<span class="nowrap">{roleLast} · {profile.roleTag}</span><br />{profile.org}
+      </p>
       <p class="body-l hero__text">
         <span class="hero__text--long">{profile.intro}</span>
         <span class="hero__text--short">{profile.introShort}</span>
@@ -100,6 +108,7 @@ const { profile, heroChips, ui, meta } = t;
   .hero__intro { display: grid; gap: 24px; justify-items: start; }
   .hero__title { max-width: 640px; }
   .hero__role { max-width: 620px; }
+  .hero__role .nowrap { white-space: nowrap; }
   .hero__text { max-width: 620px; opacity: 0.9; }
   .hero__text--short { display: none; }
   .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
