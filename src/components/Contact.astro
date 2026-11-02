@@ -78,7 +78,7 @@ const year = new Date().getFullYear();
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 8px;
+    padding: calc(4px + var(--optical)) 8px calc(4px - var(--optical));
     border: 0;
     border-radius: 6px;
     background: rgb(255 255 255 / 0.12);

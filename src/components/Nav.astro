@@ -76,12 +76,12 @@ const altHref = localeHome(ui.langSwitch.hreflang);
     display: inline-grid;
     place-items: center;
     min-width: 44px;
-    padding: 6px 10px;
+    padding: calc(6px + var(--optical)) 10px calc(6px - var(--optical));
     border-radius: 999px;
     border: 1px solid rgb(255 255 255 / 0.45);
   }
   .nav__links .lang:hover { text-decoration: none; background: rgb(255 255 255 / 0.15); }
-  .menu__social .menu__lang { width: auto; padding: 0 16px; color: var(--on-brand); text-decoration: none; }
+  .menu__social .menu__lang { width: auto; padding: calc(2 * var(--optical)) 16px 0; color: var(--on-brand); text-decoration: none; }
 
   .burger {
     display: none;
