@@ -249,6 +249,12 @@ body {
 .sheet--surface {
   --sheet-bg: var(--surface);
 }
+/* los elementos de las grillas pueden encogerse por debajo de su contenido: así una
+   fila más ancha que la pantalla no estira toda la sección (teléfonos de 320–375 px) */
+.sheet__content > *,
+.sheet__content > * > * {
+  min-width: 0;
+}
 
 /* línea de marca que se dibuja en el borde superior */
 .sheet::before {

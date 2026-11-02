@@ -74,3 +74,6 @@ const fromHash = () => {
 };
 window.addEventListener('popstate', fromHash);
 if (location.hash) requestAnimationFrame(fromHash);
+
+// Módulo ES (evita que TypeScript lo trate como script global y choquen sus constantes)
+export {};

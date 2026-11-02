@@ -19,3 +19,6 @@ if (!supportsTimeline && !reduceMotion && 'IntersectionObserver' in window) {
   );
   document.querySelectorAll('.sheet, [data-reveal], [data-card]').forEach((el) => io.observe(el));
 }
+
+// Módulo ES (evita que TypeScript lo trate como script global y choquen sus constantes)
+export {};

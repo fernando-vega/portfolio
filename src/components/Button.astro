@@ -35,6 +35,9 @@ const { variant = 'primary', href, block = false, class: className, ...rest } = 
       color var(--dur-fast) var(--ease-out);
   }
   .btn--block { display: flex; width: 100%; }
+  @media (max-width: 400px) {
+    .btn { white-space: normal; text-align: center; }
+  }
 
   .btn--primary {
     color: var(--on-brand);
