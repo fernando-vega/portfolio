@@ -105,6 +105,11 @@ ol {
   list-style: none;
 }
 
+/* secciones enfocadas al navegar por anclas: sin contorno gigante */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -211,6 +216,12 @@ ol {
 /* =========================================================
    Secciones como "hojas apiladas"
    ========================================================= */
+/* evita que el margen negativo de la primera hoja colapse con <main>: así todas las
+   secciones se miden igual (stack-cards.ts calcula su posición real) */
+main {
+  display: flow-root;
+}
+
 body {
   timeline-scope: --sheet-1, --sheet-2, --sheet-3, --sheet-4, --sheet-5, --sheet-6;
 }
