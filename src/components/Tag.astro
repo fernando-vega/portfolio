@@ -10,11 +10,11 @@ const { label } = Astro.props;
 <style>
   .tag {
     display: inline-flex;
-    padding: 6px 12px;
+    padding: calc(8px + var(--optical)) 12px calc(8px - var(--optical));
     border-radius: 999px;
     background: var(--surface-2);
     border: 1px solid var(--border);
     color: var(--text);
-    line-height: 1.5;
+    line-height: 1;
   }
 </style>

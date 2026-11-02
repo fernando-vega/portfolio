@@ -93,7 +93,7 @@ const { trama, pastWork } = projects;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px;
+    padding: calc(6px + var(--optical)) 12px calc(6px - var(--optical));
     border-radius: 999px;
     background: rgb(68 206 162 / 0.14);
     color: var(--accent);

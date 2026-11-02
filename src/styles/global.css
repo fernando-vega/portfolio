@@ -31,6 +31,9 @@
   --radius-md: 16px;
   --radius-lg: 24px;
 
+  /* centrado óptico: Overpass Mono deja 0.2em más de aire bajo las mayúsculas */
+  --optical: 0.1em;
+
   /* motion */
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --dur-fast: 200ms;
@@ -385,4 +388,23 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* =========================================================
+   Centrado óptico del texto en botones y pastillas.
+   Overpass Mono reserva más espacio bajo la línea base (descendentes) que sobre
+   las mayúsculas (0.2em), así el texto en mayúsculas se veía "subido". Se normaliza
+   el interlineado a 1 y cada componente pasa var(--optical) (0.1em) de padding de
+   abajo hacia arriba. Funciona igual en todos los navegadores (fuente propia).
+   ========================================================= */
+.btn > span,
+.tag,
+.lifecycle__step,
+.lifecycle__ai,
+.chip,
+.badge,
+.lang,
+.menu__lang,
+.copy {
+  line-height: 1;
 }

@@ -154,7 +154,7 @@ const roleHead = roleWords.join(' ');
   /* ciclo de vida */
   .lifecycle { display: flex; flex-wrap: wrap; gap: 6px; }
   .lifecycle__step {
-    padding: 7px 11px;
+    padding: calc(10px + var(--optical)) 12px calc(10px - var(--optical));
     border-radius: 999px;
     background: rgb(11 13 16 / 0.35);
     border: 1px solid rgb(255 255 255 / 0.28);
@@ -165,7 +165,7 @@ const roleHead = roleWords.join(' ');
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 12px;
+    padding: calc(10px + var(--optical)) 12px calc(10px - var(--optical));
     border-radius: 999px;
     color: #fff;
     background: rgb(11 13 16 / 0.82);
@@ -233,7 +233,7 @@ const roleHead = roleWords.join(' ');
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 16px;
+    padding: calc(12px + var(--optical)) 16px calc(12px - var(--optical));
     border-radius: 999px;
     background: rgb(11 13 16 / 0.72);
     border: 1px solid rgb(255 255 255 / 0.16);
@@ -355,7 +355,7 @@ const roleHead = roleWords.join(' ');
       background: linear-gradient(180deg, rgb(11 13 16 / 0), rgb(11 13 16 / 0.85));
     }
     .photo__glow { display: none; }
-    .chip { padding: 8px 12px; gap: 8px; }
+    .chip { padding: calc(8px + var(--optical)) 12px calc(8px - var(--optical)); gap: 8px; }
     .chip--a { left: 16px; top: auto; bottom: 64px; }
     .chip--b { left: 16px; right: auto; bottom: 16px; }
     .hero__intro { gap: 24px; }
@@ -370,7 +370,7 @@ const roleHead = roleWords.join(' ');
     .hero__role { font-size: 20px; }
     .hero__text--long { display: none; }
     .hero__text--short { display: inline; }
-    .lifecycle__step, .lifecycle__ai { padding: 6px 10px; }
+    .lifecycle__step, .lifecycle__ai { padding: calc(8px + var(--optical)) 10px calc(8px - var(--optical)); }
   }
 </style>
 

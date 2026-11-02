@@ -21,7 +21,7 @@ const { variant = 'primary', href, block = false, class: className, ...rest } = 
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 16px 28px;
+    padding: calc(20px + var(--optical)) 28px calc(20px - var(--optical));
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
