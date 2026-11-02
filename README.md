@@ -31,6 +31,19 @@ public/                # CV.pdf, favicons, manifest, robots.txt
 
 Para actualizar experiencia, proyectos o textos, edita solo `src/data/content.ts`.
 
+## Hoja de vida (PDF)
+
+Los CV viven en `public/cv/` y se publican tal cual:
+
+| Idioma | Archivo | URL publicada |
+|---|---|---|
+| Español | `public/cv/Juan-Fernando-Vega-CV-ES.pdf` | https://fernando-vega.github.io/portfolio/cv/Juan-Fernando-Vega-CV-ES.pdf |
+| Inglés | `public/cv/Juan-Fernando-Vega-CV-EN.pdf` | https://fernando-vega.github.io/portfolio/cv/Juan-Fernando-Vega-CV-EN.pdf |
+
+Para actualizar: exporta desde Figma (página **📄 CV** → *File → Export frames to PDF*),
+reemplaza el archivo con **el mismo nombre** y haz push a `master`. Los botones "Descargar CV" /
+"Download CV" ya apuntan a esas rutas (configuradas en `meta.cvFile` de `src/i18n/es.ts` y `en.ts`).
+
 ## Animaciones
 
 - Usan CSS scroll-driven animations (`animation-timeline`) con respaldo por `IntersectionObserver`.

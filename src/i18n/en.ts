@@ -13,7 +13,7 @@ export const en: SiteContent = {
     lang: 'en',
     htmlLang: 'en-US',
     ogLocale: 'en_US',
-    cvFile: 'CV-en.pdf',
+    cvFile: 'cv/Juan-Fernando-Vega-CV-EN.pdf',
     cvDownloadName: 'Juan-Fernando-Vega-CV-EN.pdf',
     jobTitle: 'Systems and Computer Engineer · Full Stack Developer',
     alumniOf: 'Universidad Pedagógica y Tecnológica de Colombia (UPTC)',
