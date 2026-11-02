@@ -1,5 +1,5 @@
 /**
- * Red de partículas del hero (evolución del canvas de la versión Angular).
+ * Red de partículas del hero (evolución del canvas del portafolio anterior).
  * - Densidad según el área (~1 punto cada 16.000 px²).
  * - Líneas entre puntos a 30–160 px con alpha según distancia.
  * - Interactiva con el mouse (punto que sigue al cursor).

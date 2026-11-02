@@ -184,7 +184,7 @@ export const en: SiteContent = {
       kpis: [
         { value: '24', label: 'tools' },
         { value: '6', label: 'countries' },
-        { value: '0', label: 'sign-ups' },
+        { value: 'NO', label: 'sign-up' },
       ],
       // Illustrative example: COP 20,000,000, 18% effective annual rate, 36 months (French amortization).
       // Values stay in Spanish format because they mirror the real Spanish-language product.
