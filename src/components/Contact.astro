@@ -2,21 +2,21 @@
 import SectionLabel from './SectionLabel.astro';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import { getContent } from '../i18n';
+import { getContent, asset } from '../i18n';
 
-const { contact, profile, ui } = getContent(Astro.currentLocale);
+const { contact, profile, ui, meta } = getContent(Astro.currentLocale);
 const year = new Date().getFullYear();
 ---
 
 <section class="sheet contact" id="contacto" aria-labelledby="contacto-title">
   <div class="sheet__content container contact__inner">
-    <SectionLabel number="06" title={contact.label} onBrand />
+    <SectionLabel number="05" title={contact.label} onBrand />
     <h2 class="display-xl contact__title" id="contacto-title" data-reveal>{contact.title}</h2>
     <p class="body-l contact__intro" data-reveal>{contact.intro}</p>
 
     <div class="contact__actions" data-reveal>
       <Button variant="dark" href={contact.jobMailto}>{ui.jobOffer}</Button>
-      <Button variant="outline-light" href={contact.advisoryMailto}>{ui.needAdvisory}</Button>
+      <Button variant="outline-light" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv}</Button>
       <div class="contact__social">
         <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label={`LinkedIn (${ui.opensInNewTab})`}><Icon name="linkedin" /></a>
         <a href={profile.social.github} target="_blank" rel="noopener" aria-label={`GitHub (${ui.opensInNewTab})`}><Icon name="github" /></a>

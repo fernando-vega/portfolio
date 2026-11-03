@@ -46,10 +46,7 @@ export const en: SiteContent = {
     mockLabel: "Illustrative example of Trama's loan simulator",
     mockCaption:
       'COP 20,000,000 at an 18% effective annual rate over 36 months: estimated monthly payment of COP 709,736.',
-    howIWork: 'How I work',
-    bookCall: 'Book a conversation',
     jobOffer: 'I have a job offer',
-    needAdvisory: 'I need consulting',
     copy: 'copy',
     copied: 'copied!',
     copyFailed: "couldn't copy",
@@ -82,14 +79,13 @@ export const en: SiteContent = {
     { href: '#sobre-mi', label: 'About' },
     { href: '#experiencia', label: 'Experience' },
     { href: '#proyectos', label: 'Projects' },
-    { href: '#asesoria', label: 'Consulting' },
     { href: '#stack', label: 'Stack' },
     { href: '#contacto', label: 'Contact' },
   ],
 
   heroChips: {
     stats: '12+ years · 5+ in banking',
-    availability: 'Available for consulting',
+    availability: 'Open to opportunities',
   },
 
   about: {
@@ -225,39 +221,6 @@ export const en: SiteContent = {
     },
   },
 
-  advisory: {
-    label: 'Consulting',
-    title: 'Does your platform need to grow without breaking?',
-    intro:
-      'Alongside my role at Banco de Bogotá, I help teams and companies through focused technical consulting, with the same rigor banking demands: stability, security, and scale.',
-    services: [
-      {
-        icon: 'architecture',
-        title: 'Architecture built to scale',
-        text: 'I review your architecture and propose a clear path to support more users and more teams: micro-frontends, SSR/CSR, and well-separated services.',
-      },
-      {
-        icon: 'traffic',
-        title: 'High-traffic platforms',
-        text: 'A diagnosis of frontend and backend bottlenecks, plus a prioritized plan so your platform holds up when demand peaks.',
-      },
-      {
-        icon: 'cloud',
-        title: 'Cloud & deployments',
-        text: 'Infrastructure as code on AWS with Terraform, plus CI/CD pipelines so you can ship often, with control and without surprises.',
-      },
-      {
-        icon: 'ai',
-        title: 'AI engineering for teams',
-        text: 'I bring AI agents into your development workflow with a method: AGENTS.md, skills, MCP, Plan → Build, TDD, and code review, so you gain speed without losing quality.',
-      },
-    ],
-    steps: [
-      'An initial conversation to understand your business',
-      'Diagnosis and proposal with scope and timeline',
-      'Hands-on sessions with your team',
-    ],
-  },
 
   stack: {
     label: 'Stack',
@@ -282,14 +245,10 @@ export const en: SiteContent = {
   contact: {
     label: 'Contact',
     title: 'Shall we build something together?',
-    intro: 'Colombia · Remote. Open to full stack roles and focused technical consulting.',
+    intro: 'Colombia · Remote. Open to new full stack opportunities.',
     jobMailto: mailto(
       'Job opportunity',
       'Hi Fernando,\n\nCompany:\nRole:\nWork arrangement (remote / hybrid):\nSalary range:\n\nTell me a bit more:\n',
-    ),
-    advisoryMailto: mailto(
-      'Technical consulting',
-      'Hi Fernando,\n\nCompany or project:\nWhat we need (architecture / high traffic / cloud & deployments):\nTimeline:\n\nContext:\n',
     ),
   },
 };
