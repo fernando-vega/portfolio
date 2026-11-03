@@ -95,7 +95,7 @@ export const en: SiteContent = {
     paragraphs: [
       "I'm a Systems and Computer Engineer from UPTC. I started in 2014 by co-founding a software studio, and today I work in Banco de Bogotá's Digital Division: high-traffic web platforms with React, Angular, and Astro, micro-frontends, Node.js and Python services, and AWS infrastructure with Terraform and CI/CD.",
       'Today I work with AI agents such as Claude Code and OpenCode using an engineering method, not vibe coding: small user stories, vertical slices, a Plan → Build workflow, TDD, and risk-based review of every change. The AI writes; I lead, set the context, and verify.',
-      "Before I write the first line of code, I make sure I understand the whole problem: the business, the architecture, and who will use the product. That's how Trama, my own product, came to be. Away from the keyboard: cycling, trail hiking, music, reading, and family.",
+      "Before I write the first line of code, I make sure I understand the whole problem: the business, the architecture, and who will use the product. That's how Trama, a personal project, came to be. Away from the keyboard: cycling, trail hiking, music, reading, and family.",
     ],
     stats: [
       { value: '12+', label: 'years building software', short: 'years' },
@@ -169,14 +169,14 @@ export const en: SiteContent = {
 
   projects: {
     label: 'Projects',
-    title: 'My own product and work for brands',
+    title: 'Personal project and work for brands',
     trama: {
       badge: 'Personal project · Just launched',
       name: 'trama',
       url: 'https://tramafin.com',
       methodologyUrl: 'https://tramafin.com/metodologia',
       description:
-        'A Spanish-language platform with free financial calculators for Colombia, Mexico, Argentina, Peru, Chile, and Spain, no sign-up required: loans, CDTs (term deposits), take-home pay, service bonus (prima), severance (cesantías), VAT, and more. Formulas are cited and reviewed, and calculations run on your device. I designed, built, and run it on my own, with Astro.',
+        'A Spanish-language platform with free financial calculators for Colombia, Mexico, Argentina, Peru, Chile, and Spain, no sign-up required: loans, CDTs (term deposits), take-home pay, service bonus (prima), severance (cesantías), VAT, and more. Formulas are cited and reviewed, and calculations run on your device. It is a personal side project I build in my spare time, with Astro.',
       kpis: [
         { value: '24', label: 'tools' },
         { value: '6', label: 'countries' },

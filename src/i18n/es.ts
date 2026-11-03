@@ -94,7 +94,7 @@ export const es: SiteContent = {
     paragraphs: [
       'Soy ingeniero de Sistemas y Computación de la UPTC. Empecé en 2014 cofundando un estudio de software y hoy desarrollo en el área digital del Banco de Bogotá: plataformas web de alto tráfico con React, Angular y Astro, micro-frontends, servicios en Node.js y Python, e infraestructura en AWS con Terraform y CI/CD.',
       'Hoy trabajo con agentes de IA como Claude Code y OpenCode bajo un método de ingeniería, no de vibe coding: historias de usuario pequeñas, vertical slices, flujo Plan → Build, TDD y revisión de cada cambio según su riesgo. La IA escribe; yo dirijo, defino el contexto y verifico.',
-      'Antes de escribir la primera línea, me aseguro de entender el problema completo: el negocio, la arquitectura y quién va a usar el producto. Así nació Trama, mi producto propio. Fuera del código: bicicleta, senderos, música, lectura y familia.',
+      'Antes de escribir la primera línea, me aseguro de entender el problema completo: el negocio, la arquitectura y quién va a usar el producto. Así nació Trama, un proyecto personal. Fuera del código: bicicleta, senderos, música, lectura y familia.',
     ],
     stats: [
       { value: '12+', label: 'años desarrollando software', short: 'años' },
@@ -167,14 +167,14 @@ export const es: SiteContent = {
 
   projects: {
     label: 'Proyectos',
-    title: 'Producto propio y trabajo para marcas',
+    title: 'Proyecto personal y trabajo para marcas',
     trama: {
       badge: 'Proyecto personal · Recién lanzado',
       name: 'trama',
       url: 'https://tramafin.com',
       methodologyUrl: 'https://tramafin.com/metodologia',
       description:
-        'Calculadoras financieras gratis y sin registro para Colombia, México, Argentina, Perú, Chile y España: créditos, CDT, salario neto, prima, cesantías, IVA y más. Fórmulas citadas y revisadas, y cálculos que corren en tu dispositivo. La diseñé, construí y opero yo solo, con Astro.',
+        'Calculadoras financieras gratis y sin registro para Colombia, México, Argentina, Perú, Chile y España: créditos, CDT, salario neto, prima, cesantías, IVA y más. Fórmulas citadas y revisadas, y cálculos que corren en tu dispositivo. Es un proyecto personal que desarrollo en mi tiempo libre, con Astro.',
       kpis: [
         { value: '24', label: 'herramientas' },
         { value: '6', label: 'países' },
