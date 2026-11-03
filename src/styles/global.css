@@ -44,6 +44,8 @@
   --reveal-blur: 2px;
   --sticky-top: 120px;
   --sheet-radius: 40px;
+  /* pausa: scroll durante el cual la sección fija sigue completa antes de que la siguiente la cubra */
+  --sheet-dwell: 25svh;
   --sheet-rise: 80px;
   --behind-scale: 0.96;
   --behind-brightness: 0.6;
@@ -239,7 +241,9 @@ body {
 }
 
 .sheet {
-  margin-top: calc(var(--sheet-radius) * -1);
+  /* en vez de solaparse con la anterior, cada hoja llega después de una pausa: la sección
+     anterior queda fija y visible completa mientras se recorre --sheet-dwell */
+  margin-top: var(--sheet-dwell);
   border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
   background: var(--sheet-bg, var(--bg));
   box-shadow: 0 -24px 48px rgb(0 0 0 / 0.45);
