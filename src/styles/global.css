@@ -385,17 +385,6 @@ body {
   70% { box-shadow: 0 0 0 10px rgb(68 206 162 / 0); }
   100% { box-shadow: 0 0 0 0 rgb(68 206 162 / 0); }
 }
-.dot-live {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  flex: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .dot-live { animation: ripple 1.2s infinite; }
-}
 
 /* =========================================================
    Movimiento reducido: todo estático

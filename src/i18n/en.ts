@@ -5,8 +5,6 @@
 import type { SiteContent } from './types';
 
 const email = 'juanfe.vega@gmail.com';
-const mailto = (subject: string, body: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 export const en: SiteContent = {
   meta: {
@@ -46,7 +44,7 @@ export const en: SiteContent = {
     mockLabel: "Illustrative example of Trama's loan simulator",
     mockCaption:
       'COP 20,000,000 at an 18% effective annual rate over 36 months: estimated monthly payment of COP 709,736.',
-    jobOffer: 'I have a job offer',
+    writeMe: 'Email me',
     copy: 'copy',
     copied: 'copied!',
     copyFailed: "couldn't copy",
@@ -85,7 +83,6 @@ export const en: SiteContent = {
 
   heroChips: {
     stats: '12+ years · 5+ in banking',
-    availability: 'Open to opportunities',
   },
 
   about: {
@@ -246,10 +243,7 @@ export const en: SiteContent = {
     label: 'Contact',
     disclaimer: 'This is a personal site; it does not represent and is not endorsed by my current or former employers.',
     title: 'Shall we talk?',
-    intro: 'Colombia · Remote. Open to new full stack opportunities.',
-    jobMailto: mailto(
-      'Job opportunity',
-      'Hi Fernando,\n\nCompany:\nRole:\nWork arrangement (remote / hybrid):\nSalary range:\n\nTell me a bit more:\n',
-    ),
+    intro: 'Colombia · Remote.',
+    mailto: `mailto:${email}`,
   },
 };

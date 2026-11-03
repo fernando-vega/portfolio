@@ -5,8 +5,6 @@
 import type { SiteContent } from './types';
 
 const email = 'juanfe.vega@gmail.com';
-const mailto = (subject: string, body: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 export const es: SiteContent = {
   meta: {
@@ -45,7 +43,7 @@ export const es: SiteContent = {
     methodology: 'Metodología',
     mockLabel: 'Ejemplo ilustrativo del simulador de crédito de Trama',
     mockCaption: 'Monto de 20 millones de pesos, 18 % efectivo anual a 36 meses: cuota mensual estimada de 709.736 pesos.',
-    jobOffer: 'Tengo una oferta laboral',
+    writeMe: 'Escríbeme',
     copy: 'copiar',
     copied: '¡copiado!',
     copyFailed: 'no se pudo copiar',
@@ -84,7 +82,6 @@ export const es: SiteContent = {
 
   heroChips: {
     stats: '12+ años · 5+ en banca',
-    availability: 'Abierto a oportunidades',
   },
 
   about: {
@@ -243,10 +240,7 @@ export const es: SiteContent = {
     label: 'Contacto',
     disclaimer: 'Este es un sitio personal; no representa ni tiene respaldo de mis empleadores actuales o anteriores.',
     title: '¿Quieres que hablemos?',
-    intro: 'Colombia · trabajo remoto. Abierto a nuevas oportunidades full stack.',
-    jobMailto: mailto(
-      'Oportunidad laboral',
-      'Hola Fernando,\n\nEmpresa:\nCargo:\nModalidad (remoto / híbrido):\nRango salarial:\n\nCuéntame un poco más:\n',
-    ),
+    intro: 'Colombia · trabajo remoto.',
+    mailto: `mailto:${email}`,
   },
 };

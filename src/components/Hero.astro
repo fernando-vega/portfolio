@@ -56,7 +56,6 @@ const roleHead = roleWords.join(' ');
         />
       </div>
       <p class="chip chip--a label-s">{heroChips.stats}</p>
-      <p class="chip chip--b label-s"><span class="dot-live"></span>{heroChips.availability}</p>
     </div>
   </div>
 
@@ -243,7 +242,6 @@ const roleHead = roleWords.join(' ');
     white-space: nowrap;
   }
   .chip--a { left: -56px; top: 28px; }
-  .chip--b { right: -40px; bottom: 36px; }
 
   /* señal de scroll (borde derecho) */
   .scroll-cue {
@@ -288,7 +286,6 @@ const roleHead = roleWords.join(' ');
   @media (prefers-reduced-motion: no-preference) {
     .photo__card { animation: photo-in 900ms var(--ease-out) both; }
     .chip { animation: chip-in 500ms var(--ease-out) 600ms both, float 4s ease-in-out 1.1s infinite; }
-    .chip--b { animation-delay: 750ms, 2.3s; }
     .photo__glow { animation: glow 6s ease-in-out infinite; }
     .scroll-cue__label { animation: stripes 1.8s linear infinite; }
     .scroll-cue__dot { animation: cue 1.6s ease-in-out infinite; }
@@ -356,8 +353,7 @@ const roleHead = roleWords.join(' ');
     }
     .photo__glow { display: none; }
     .chip { padding: calc(8px + var(--optical)) 12px calc(8px - var(--optical)); gap: 8px; max-width: calc(100% - 32px); white-space: normal; }
-    .chip--a { left: 16px; top: auto; bottom: 64px; }
-    .chip--b { left: 16px; right: auto; bottom: 16px; }
+    .chip--a { left: 16px; top: auto; bottom: 16px; }
     .hero__intro { gap: 24px; }
     .hero__ctas { display: grid; width: 100%; }
     .hero__cv { margin: 4px 0 0; }

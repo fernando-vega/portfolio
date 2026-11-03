@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
     <p class="body-l contact__intro" data-reveal>{contact.intro}</p>
 
     <div class="contact__actions" data-reveal>
-      <Button variant="dark" href={contact.jobMailto}>{ui.jobOffer}</Button>
+      <Button variant="dark" href={contact.mailto}>{ui.writeMe}</Button>
       <Button variant="outline-light" href={asset(meta.cvFile)} download={meta.cvDownloadName}>{ui.downloadCv}</Button>
       <div class="contact__social">
         <a href={profile.social.linkedin} target="_blank" rel="noopener" aria-label={`LinkedIn (${ui.opensInNewTab})`}><Icon name="linkedin" /></a>
