@@ -70,7 +70,7 @@ export interface SiteContent {
     methodology: string;
     mockLabel: string;
     mockCaption: string;
-    jobOffer: string;
+    writeMe: string;
     copy: string;
     copied: string;
     copyFailed: string;
@@ -94,7 +94,7 @@ export interface SiteContent {
     social: { linkedin: string; github: string };
   };
   nav: { href: string; label: string }[];
-  heroChips: { stats: string; availability: string };
+  heroChips: { stats: string };
   about: {
     label: string;
     title: string;
@@ -143,7 +143,7 @@ export interface SiteContent {
     label: string;
     title: string;
     intro: string;
-    jobMailto: string;
+    mailto: string;
     /** Aviso del pie: sitio personal, sin respaldo de empleadores. */
     disclaimer: string;
   };

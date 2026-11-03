@@ -46,8 +46,6 @@
   --sheet-radius: 40px;
   /* pausa: scroll durante el cual la sección fija sigue completa antes de que la siguiente la cubra */
   --sheet-dwell: 25svh;
-  /* tirón elástico del borde superior al entrar */
-  --sheet-pull: 24px;
   --sheet-rise: 80px;
   --behind-scale: 0.96;
   --behind-brightness: 0.6;
@@ -58,7 +56,6 @@
   :root {
     --sheet-radius: 28px;
     --sheet-rise: 48px;
-    --sheet-pull: 16px;
   }
 }
 
@@ -251,11 +248,7 @@ body {
   background: var(--sheet-bg, var(--bg));
   box-shadow: 0 -24px 48px rgb(0 0 0 / 0.45);
   padding-block: var(--section-pad);
-  overflow-x: clip;
-  overflow-y: visible;
-  /* relleno y línea del arco elástico (la sección de contacto los redefine) */
-  --arch-fill: linear-gradient(var(--sheet-bg, var(--bg)), var(--sheet-bg, var(--bg)));
-  --arch-line: rgb(68 206 162 / 0.9);
+  overflow: clip;
 }
 .sheet--surface {
   --sheet-bg: var(--surface);
@@ -280,28 +273,6 @@ body {
   z-index: 2;
 }
 
-/* Tirón elástico: arco sobre el borde superior, como una tela jalada desde la mitad.
-   El arco es un tramo de elipse ancha (pendiente suave hacia las esquinas, sin "cúpula");
-   solo se escala en vertical, así el contenido nunca se deforma. */
-.sheet::after {
-  --arch: 70% 333.33% at 50% 333.33%;
-  content: '';
-  position: absolute;
-  left: var(--sheet-radius);
-  right: var(--sheet-radius);
-  bottom: 100%;
-  height: var(--sheet-pull);
-  margin-bottom: -1px; /* sin rendija entre el arco y la hoja */
-  background:
-    radial-gradient(var(--arch), transparent 96%, var(--arch-line) 96.5%),
-    var(--arch-fill);
-  -webkit-mask: radial-gradient(var(--arch), #000 99.5%, transparent 100%);
-  mask: radial-gradient(var(--arch), #000 99.5%, transparent 100%);
-  transform-origin: 50% 100%;
-  scale: 1 0;
-  pointer-events: none;
-}
-
 .sheet:nth-of-type(1) { view-timeline-name: --sheet-1; z-index: 1; }
 .sheet:nth-of-type(2) { view-timeline-name: --sheet-2; z-index: 2; }
 .sheet:nth-of-type(3) { view-timeline-name: --sheet-3; z-index: 3; }
@@ -318,12 +289,6 @@ body {
     border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
     box-shadow: 0 -32px 64px rgb(0 0 0 / 0.55);
   }
-}
-@keyframes elastic-pull {
-  0% { scale: 1 1; }
-  62% { scale: 1 0; }
-  74% { scale: 1 0.22; } /* rebote suave */
-  86%, 100% { scale: 1 0; }
 }
 @keyframes line-draw {
   from { transform: scaleX(0); }
@@ -346,19 +311,8 @@ body {
     .sheet::before {
       animation: line-draw linear both;
       animation-timeline: view();
-      animation-range: entry 45% entry 95%;
+      animation-range: entry 20% entry 90%;
     }
-    .sheet::after {
-      animation: elastic-pull linear both;
-      animation-range: entry 0% entry 80%;
-    }
-    /* el arco usa la línea de tiempo de su propia sección (view() en un pseudo-elemento no la toma) */
-    .sheet:nth-of-type(1)::after { animation-timeline: --sheet-1; }
-    .sheet:nth-of-type(2)::after { animation-timeline: --sheet-2; }
-    .sheet:nth-of-type(3)::after { animation-timeline: --sheet-3; }
-    .sheet:nth-of-type(4)::after { animation-timeline: --sheet-4; }
-    .sheet:nth-of-type(5)::after { animation-timeline: --sheet-5; }
-    .sheet:nth-of-type(6)::after { animation-timeline: --sheet-6; }
     /* el contenido de la hoja anterior se aleja mientras la siguiente la cubre */
     .sheet > .sheet__content {
       transform-origin: 50% 100%;
@@ -430,17 +384,6 @@ body {
   0% { box-shadow: 0 0 0 0 rgb(68 206 162 / 0.55); }
   70% { box-shadow: 0 0 0 10px rgb(68 206 162 / 0); }
   100% { box-shadow: 0 0 0 0 rgb(68 206 162 / 0); }
-}
-.dot-live {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  flex: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .dot-live { animation: ripple 1.2s infinite; }
 }
 
 /* =========================================================
