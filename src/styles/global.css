@@ -241,13 +241,15 @@ body {
 }
 
 .sheet {
-  /* en vez de solaparse con la anterior, cada hoja llega después de una pausa: la sección
-     anterior queda fija y visible completa mientras se recorre --sheet-dwell */
-  margin-top: var(--sheet-dwell);
+  margin-top: calc(var(--sheet-radius) * -1);
   border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
   background: var(--sheet-bg, var(--bg));
   box-shadow: 0 -24px 48px rgb(0 0 0 / 0.45);
   padding-block: var(--section-pad);
+  /* pausa de lectura: espacio extra al final, con el fondo de la propia hoja. La hoja queda
+     fija con su contenido completo a la vista mientras la siguiente cubre primero este
+     espacio vacío (antes era un margen y dejaba ver la sección de abajo por el hueco) */
+  padding-bottom: calc(var(--section-pad) + var(--sheet-dwell));
   overflow: clip;
 }
 .sheet--surface {
