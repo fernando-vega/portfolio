@@ -242,7 +242,7 @@ export const es: SiteContent = {
   contact: {
     label: 'Contacto',
     disclaimer: 'Este es un sitio personal; no representa ni tiene respaldo de mis empleadores actuales o anteriores.',
-    title: '¿Tienes una oferta laboral? Hablemos.',
+    title: '¿Quieres que hablemos?',
     intro: 'Colombia · trabajo remoto. Abierto a nuevas oportunidades full stack.',
     jobMailto: mailto(
       'Oportunidad laboral',
