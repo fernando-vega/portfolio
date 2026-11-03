@@ -59,7 +59,7 @@ export const es: SiteContent = {
     headline: 'Llevo el software de la idea a producción.',
     role: 'Ingeniero de Sistemas y Computación',
     roleTag: 'Full Stack Senior',
-    org: 'Área Digital del Banco de Bogotá',
+    org: 'Banca digital',
     intro:
       'Más de 12 años creando productos web y más de 5 en banca digital. Analizo el problema, diseño la arquitectura, construyo, pruebo y despliego en AWS. Colombia · trabajo remoto.',
     introShort:
@@ -92,7 +92,7 @@ export const es: SiteContent = {
     title: 'Del pixel a la infraestructura.',
     meta: 'UPTC · desde 2014 · Colombia, remoto',
     paragraphs: [
-      'Soy ingeniero de Sistemas y Computación de la UPTC. Empecé en 2014 cofundando un estudio de software y hoy desarrollo en el área digital del Banco de Bogotá: plataformas web de alto tráfico con React, Angular y Astro, micro-frontends, servicios en Node.js y Python, e infraestructura en AWS con Terraform y CI/CD.',
+      'Soy ingeniero de Sistemas y Computación de la UPTC. Empecé en 2014 cofundando un estudio de software y hoy desarrollo en banca digital: plataformas web de alto tráfico con React, Angular y Astro, micro-frontends, servicios en Node.js y Python, e infraestructura en AWS con Terraform y CI/CD.',
       'Hoy trabajo con agentes de IA como Claude Code y OpenCode bajo un método de ingeniería, no de vibe coding: historias de usuario pequeñas, vertical slices, flujo Plan → Build, TDD y revisión de cada cambio según su riesgo. La IA escribe; yo dirijo, defino el contexto y verifico.',
       'Antes de escribir la primera línea, me aseguro de entender el problema completo: el negocio, la arquitectura y quién va a usar el producto. Así nació Trama, un proyecto personal. Fuera del código: bicicleta, senderos, música, lectura y familia.',
     ],
@@ -112,7 +112,7 @@ export const es: SiteContent = {
         start: 'Jun 2022',
         end: 'Actualidad',
         company: 'Banco de Bogotá',
-        role: 'Desarrollador Full Stack Senior · Área Digital (Analista I)',
+        role: 'Desarrollador Full Stack Senior · Banca digital',
         description:
           'Desarrollo plataformas web de alto tráfico para clientes del banco, con arquitecturas pensadas para escalar: micro-frontends en React, Angular, Astro y Stencil, renderizado SSR/CSR, servicios, librerías y APIs documentadas con OpenAPI (OAS) en Node.js y Python sobre PostgreSQL, e infraestructura como código en AWS serverless con Terraform y CI/CD.',
         tags: ['React', 'Angular', 'Astro', 'Stencil', 'Micro-frontends', 'SSR / CSR', 'Node.js', 'Python', 'OpenAPI', 'PostgreSQL', 'AWS Serverless', 'Terraform', 'CI/CD'],
@@ -124,7 +124,7 @@ export const es: SiteContent = {
         end: 'Ene 2022',
         company: 'AOS & Sophos Solutions',
         role: 'Desarrollador Frontend · para Scotiabank Colpatria',
-        description: 'Desarrollé micro-frontends y SPA en Angular para el producto de preaprobados del banco, con monitoreo en Kibana y Dynatrace.',
+        description: 'Desarrollé micro-frontends y SPA en Angular para herramientas digitales del banco, con monitoreo en Kibana y Dynatrace.',
       },
       {
         start: 'Feb 2020',
