@@ -25,8 +25,6 @@ export interface ProjectGroup {
   items: PastProject[];
 }
 
-export type ServiceIcon = 'architecture' | 'traffic' | 'cloud' | 'ai';
-
 export interface StackGroup {
   title: string;
   items: string[];
@@ -72,10 +70,7 @@ export interface SiteContent {
     methodology: string;
     mockLabel: string;
     mockCaption: string;
-    howIWork: string;
-    bookCall: string;
     jobOffer: string;
-    needAdvisory: string;
     copy: string;
     copied: string;
     copyFailed: string;
@@ -138,13 +133,6 @@ export interface SiteContent {
       collab: ProjectGroup;
     };
   };
-  advisory: {
-    label: string;
-    title: string;
-    intro: string;
-    services: { icon: ServiceIcon; title: string; text: string }[];
-    steps: string[];
-  };
   stack: {
     label: string;
     title: string;
@@ -156,6 +144,5 @@ export interface SiteContent {
     title: string;
     intro: string;
     jobMailto: string;
-    advisoryMailto: string;
   };
 }
