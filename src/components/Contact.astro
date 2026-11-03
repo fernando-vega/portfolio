@@ -45,6 +45,7 @@ const year = new Date().getFullYear();
         <p class="label-s">© {year} {profile.name}</p>
         <a class="label-s" href="#inicio">{ui.backToTop}</a>
       </div>
+      <p class="foot__note">{contact.disclaimer}</p>
     </footer>
   </div>
 </section>
@@ -52,6 +53,8 @@ const year = new Date().getFullYear();
 <style>
   .contact {
     --sheet-bg: transparent;
+    --arch-fill: linear-gradient(90deg, #3fbfa0, #2b86a6 55%, #1d669f);
+    --arch-line: rgb(255 255 255 / 0.6);
     background: var(--brand-gradient);
     color: var(--on-brand);
     padding-bottom: 40px;
@@ -91,6 +94,7 @@ const year = new Date().getFullYear();
   .foot__line { height: 1px; background: rgb(255 255 255 / 0.25); }
   .foot__row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .foot__row a { color: var(--on-brand); text-decoration: none; }
+  .foot__note { color: rgb(255 255 255 / 0.9); max-width: 60ch; }
   .foot__row a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   @media (max-width: 379px) {

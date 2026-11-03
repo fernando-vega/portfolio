@@ -244,7 +244,8 @@ export const en: SiteContent = {
 
   contact: {
     label: 'Contact',
-    title: 'Shall we build something together?',
+    disclaimer: 'This is a personal site; it does not represent and is not endorsed by my current or former employers.',
+    title: "Have a job opening? Let's talk.",
     intro: 'Colombia · Remote. Open to new full stack opportunities.',
     jobMailto: mailto(
       'Job opportunity',

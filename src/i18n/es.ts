@@ -241,7 +241,8 @@ export const es: SiteContent = {
 
   contact: {
     label: 'Contacto',
-    title: '¿Construimos algo juntos?',
+    disclaimer: 'Este es un sitio personal; no representa ni tiene respaldo de mis empleadores actuales o anteriores.',
+    title: '¿Tienes una oferta laboral? Hablemos.',
     intro: 'Colombia · trabajo remoto. Abierto a nuevas oportunidades full stack.',
     jobMailto: mailto(
       'Oportunidad laboral',

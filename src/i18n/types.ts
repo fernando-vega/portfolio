@@ -144,5 +144,7 @@ export interface SiteContent {
     title: string;
     intro: string;
     jobMailto: string;
+    /** Aviso del pie: sitio personal, sin respaldo de empleadores. */
+    disclaimer: string;
   };
 }
