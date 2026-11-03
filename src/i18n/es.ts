@@ -45,10 +45,7 @@ export const es: SiteContent = {
     methodology: 'Metodología',
     mockLabel: 'Ejemplo ilustrativo del simulador de crédito de Trama',
     mockCaption: 'Monto de 20 millones de pesos, 18 % efectivo anual a 36 meses: cuota mensual estimada de 709.736 pesos.',
-    howIWork: 'Cómo trabajo',
-    bookCall: 'Agenda una conversación',
     jobOffer: 'Tengo una oferta laboral',
-    needAdvisory: 'Necesito asesoría',
     copy: 'copiar',
     copied: '¡copiado!',
     copyFailed: 'no se pudo copiar',
@@ -81,14 +78,13 @@ export const es: SiteContent = {
     { href: '#sobre-mi', label: 'Sobre mí' },
     { href: '#experiencia', label: 'Experiencia' },
     { href: '#proyectos', label: 'Proyectos' },
-    { href: '#asesoria', label: 'Asesoría' },
     { href: '#stack', label: 'Stack' },
     { href: '#contacto', label: 'Contacto' },
   ],
 
   heroChips: {
     stats: '12+ años · 5+ en banca',
-    availability: 'Disponible para asesoría',
+    availability: 'Abierto a oportunidades',
   },
 
   about: {
@@ -222,39 +218,6 @@ export const es: SiteContent = {
     },
   },
 
-  advisory: {
-    label: 'Asesoría',
-    title: '¿Tu plataforma necesita crecer sin romperse?',
-    intro:
-      'Además de mi rol en el Banco de Bogotá, acompaño a equipos y empresas con asesoría técnica puntual, con la misma exigencia de la banca: estabilidad, seguridad y escala.',
-    services: [
-      {
-        icon: 'architecture',
-        title: 'Arquitectura para escalar',
-        text: 'Reviso tu arquitectura y te propongo un camino claro para soportar más usuarios y más equipos: micro-frontends, SSR/CSR y servicios bien separados.',
-      },
-      {
-        icon: 'traffic',
-        title: 'Plataformas de alto tráfico',
-        text: 'Diagnóstico de cuellos de botella en frontend y backend, y un plan priorizado para que tu plataforma responda cuando más se usa.',
-      },
-      {
-        icon: 'cloud',
-        title: 'Nube y despliegues',
-        text: 'Infraestructura como código en AWS con Terraform y pipelines de CI/CD para desplegar con frecuencia, con control y sin sobresaltos.',
-      },
-      {
-        icon: 'ai',
-        title: 'Ingeniería con IA para equipos',
-        text: 'Llevo agentes de IA a tu flujo de desarrollo con método: AGENTS.md, skills, MCP, Plan → Build, TDD y revisión de código, para ganar velocidad sin perder calidad.',
-      },
-    ],
-    steps: [
-      'Conversación inicial para entender tu negocio',
-      'Diagnóstico y propuesta con alcance y tiempos',
-      'Sesiones de acompañamiento con tu equipo',
-    ],
-  },
 
   stack: {
     label: 'Stack',
@@ -279,14 +242,10 @@ export const es: SiteContent = {
   contact: {
     label: 'Contacto',
     title: '¿Construimos algo juntos?',
-    intro: 'Colombia · trabajo remoto. Abierto a oportunidades full stack y a asesorías técnicas puntuales.',
+    intro: 'Colombia · trabajo remoto. Abierto a nuevas oportunidades full stack.',
     jobMailto: mailto(
       'Oportunidad laboral',
       'Hola Fernando,\n\nEmpresa:\nCargo:\nModalidad (remoto / híbrido):\nRango salarial:\n\nCuéntame un poco más:\n',
-    ),
-    advisoryMailto: mailto(
-      'Asesoría técnica',
-      'Hola Fernando,\n\nEmpresa o proyecto:\nQué necesitamos (arquitectura / alto tráfico / nube y despliegues):\nPlazo:\n\nContexto:\n',
     ),
   },
 };
